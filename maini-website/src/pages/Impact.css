@@ -1,0 +1,170 @@
+.impact {
+  background: #f8fafc;
+  padding: 120px 0;
+}
+
+/* Header */
+.impact-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 50px;
+}
+
+.impact-header h1 {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.impact-header p {
+  max-width: 500px;
+  color: #475569;
+}
+
+/* Tabs */
+.impact-tabs {
+  background: white;
+  padding: 6px;
+  border-radius: 10px;
+  display: flex;
+  gap: 6px;
+  border: 1px solid #e2e8f0;
+}
+
+.impact-tabs button {
+  padding: 10px 22px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  background: transparent;
+  color: #475569;
+}
+
+.impact-tabs .active.hydro {
+  background: #2563eb;
+  color: white;
+}
+
+.impact-tabs .active.sdg {
+  background: #16a34a;
+  color: white;
+}
+
+/* Hydro */
+.hydro-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+}
+
+.hydro-text h2 {
+  font-size: 28px;
+  margin-bottom: 12px;
+}
+
+.hydro-text p {
+  color: #475569;
+}
+
+.hydro-stats {
+  margin-top: 30px;
+  display: grid;
+  gap: 14px;
+}
+
+.hydro-stats div {
+  background: #eff6ff;
+  padding: 16px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.hydro-stats div.green {
+  background: #ecfdf5;
+}
+
+.hydro-stats span {
+  color: #475569;
+}
+
+.hydro-stats strong {
+  color: #1d4ed8;
+}
+
+.hydro-stats .green strong {
+  color: #15803d;
+}
+
+/* Visual */
+.hydro-visual {
+  background: url('https://images.unsplash.com/photo-1595116962319-38b4d8122c54');
+  background-size: cover;
+  background-position: center;
+  border-radius: 16px;
+  position: relative;
+}
+
+.visual-card {
+  background: rgba(255,255,255,0.95);
+  padding: 30px;
+  border-radius: 14px;
+  max-width: 260px;
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+  text-align: center;
+}
+
+.visual-card svg {
+  color: #2563eb;
+  margin-bottom: 10px;
+}
+
+/* SDGs */
+.sdg-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 30px;
+}
+
+.sdg-card {
+  padding: 30px;
+  border-radius: 16px;
+}
+
+.sdg-number {
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  margin-bottom: 16px;
+}
+
+.yellow { background: #fff7ed; }
+.yellow .sdg-number { background: #f59e0b; }
+
+.orange { background: #fff1f2; }
+.orange .sdg-number { background: #f97316; }
+
+.green { background: #ecfdf5; }
+.green .sdg-number { background: #16a34a; }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .impact-header {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .hydro-grid {
+    grid-template-columns: 1fr;
+  }
+  .sdg-grid {
+    grid-template-columns: 1fr;
+  }
+}
