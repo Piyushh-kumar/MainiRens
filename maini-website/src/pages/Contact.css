@@ -1,81 +1,252 @@
-.contact {
-  background: #020617;
-  color: white;
-  padding: 120px 0;
+/* --- Variables (Scoped with cntc-) --- */
+:root {
+  --cntc-primary: #059669;       /* Emerald Green */
+  --cntc-primary-dark: #047857;  /* Darker Emerald */
+  --cntc-accent: #0d9488;        /* Teal */
+  --cntc-bg: #ffffff;            /* White Background */
+  --cntc-bg-soft: #f0fdf4;       /* Mint Tint */
+  --cntc-text-main: #111827;     /* Dark Gray */
+  --cntc-text-muted: #4b5563;    /* Slate Gray */
+  --cntc-border: #e5e7eb;
+  
+  /* Shadows */
+  --cntc-shadow: 0 10px 30px -5px rgba(5, 150, 105, 0.08);
+  --cntc-shadow-hover: 0 20px 40px -5px rgba(5, 150, 105, 0.15);
 }
 
-.contact-grid {
+.cntc-section {
+  background-color: var(--cntc-bg);
+  color: var(--cntc-text-main);
+  padding: 8rem 0;
+  font-family: 'Inter', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background Blob Decoration */
+.cntc-bg-blob {
+  position: absolute;
+  bottom: -10%;
+  left: -5%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(13, 148, 136, 0.08) 0%, rgba(255,255,255,0) 70%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.cntc-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.cntc-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 60px;
+  gap: 5rem;
   align-items: center;
 }
 
-.contact-info h1 {
-  font-size: 42px;
-  margin-bottom: 12px;
-}
-
-.contact-info p {
-  color: #cbd5e1;
-  margin-bottom: 30px;
-  max-width: 400px;
-}
-
-.contact-info ul {
-  list-style: none;
+/* --- Left Column --- */
+.cntc-info-col {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  justify-content: center;
 }
 
-.contact-info li {
-  display: flex;
-  gap: 12px;
+.cntc-badge {
+  display: inline-flex;
   align-items: center;
-  color: #e2e8f0;
+  gap: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--cntc-accent);
+  background: var(--cntc-bg-soft);
+  padding: 6px 14px;
+  border-radius: 50px;
+  width: fit-content;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(5, 150, 105, 0.1);
 }
 
-.contact-info svg {
-  color: #38bdf8;
+.cntc-badge-dot {
+  width: 6px;
+  height: 6px;
+  background-color: var(--cntc-primary);
+  border-radius: 50%;
+  animation: cntc-pulse 2s infinite;
 }
 
-/* Card */
-.contact-card {
-  background: #020617;
-  border: 1px solid #1e293b;
-  padding: 50px;
-  border-radius: 20px;
+.cntc-title {
+  font-size: 3.5rem;
+  line-height: 1.1;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+  color: var(--cntc-text-main);
+}
+
+.cntc-text-gradient {
+  background: linear-gradient(135deg, var(--cntc-primary) 0%, var(--cntc-accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.cntc-desc {
+  color: var(--cntc-text-muted);
+  font-size: 1.125rem;
+  line-height: 1.6;
+  margin-bottom: 2.5rem;
+  max-width: 480px;
+}
+
+/* List Styles */
+.cntc-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.cntc-list-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.cntc-icon-box {
+  width: 44px;
+  height: 44px;
+  background: var(--cntc-bg-soft);
+  color: var(--cntc-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  transition: transform 0.2s ease;
+}
+
+.cntc-list-item:hover .cntc-icon-box {
+  transform: scale(1.1);
+  background: var(--cntc-primary);
+  color: #fff;
+}
+
+.cntc-text, .cntc-link {
+  font-size: 1.05rem;
+  color: var(--cntc-text-main);
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.cntc-link:hover {
+  color: var(--cntc-primary);
+}
+
+/* --- Right Column (Card) --- */
+.cntc-card-col {
+  display: flex;
+  justify-content: center;
+}
+
+.cntc-card {
+  background: #ffffff;
+  border: 1px solid var(--cntc-border);
+  padding: 3.5rem 3rem;
+  border-radius: 24px;
   text-align: center;
+  box-shadow: var(--cntc-shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.contact-card h2 {
-  font-size: 26px;
-  margin-bottom: 10px;
+.cntc-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--cntc-shadow-hover);
+  border-color: rgba(5, 150, 105, 0.2);
 }
 
-.contact-card p {
-  color: #94a3b8;
-  margin-bottom: 30px;
+.cntc-card-icon {
+  width: 64px;
+  height: 64px;
+  background: linear-gradient(135deg, var(--cntc-primary-dark) 0%, var(--cntc-accent) 100%);
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 8px 16px rgba(5, 150, 105, 0.25);
 }
 
-.contact-card button {
-  background: white;
-  color: #020617;
-  padding: 14px 30px;
-  border-radius: 999px;
+.cntc-card-title {
+  font-size: 1.75rem;
   font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--cntc-text-main);
+}
+
+.cntc-card-desc {
+  color: var(--cntc-text-muted);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.cntc-button {
+  background: var(--cntc-text-main);
+  color: #ffffff;
+  padding: 14px 32px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1rem;
   border: none;
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  transition: all 0.3s ease;
 }
 
-.contact-card button:hover {
-  background: #e0f2fe;
+.cntc-button:hover {
+  background: var(--cntc-primary);
+  gap: 12px;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3);
 }
 
-/* Responsive */
+/* --- Animations --- */
+@keyframes cntc-pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.5); opacity: 0.5; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* --- Responsive --- */
 @media (max-width: 900px) {
-  .contact-grid {
+  .cntc-grid {
     grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  
+  .cntc-info-col {
+    align-items: center;
+    text-align: center;
+  }
+  
+  .cntc-list {
+    align-items: center; /* Centers list items */
+  }
+  
+  .cntc-title {
+    font-size: 2.5rem;
   }
 }

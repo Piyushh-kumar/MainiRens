@@ -1,71 +1,164 @@
+/* =========================================================
+   NAVBAR STYLES
+========================================================= */
+
+/* BASE STATE (Transparent Background / White Text) 
+   Used for: Home Page Top */
 .navbar {
   position: fixed;
-  width: 100%;
   top: 0;
-  z-index: 100;
-  padding: 20px 0;
-  transition: 0.3s;
+  width: 100%;
+  z-index: 1000;
+  padding: 18px 0;
+  transition: all 0.3s ease;
+  background: transparent;
+  color: white; 
 }
 
+/* DARK STATE (White Background / Dark Text)
+   Used for: Scrolled Home Page OR All Inner Pages (Technology, About) */
 .navbar.scrolled {
-  background: #fff;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  padding: 12px 0;
 }
 
+/* LAYOUT */
 .nav-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.logo {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  font-weight: 800;
-}
-
-.logo-box {
-  width: 40px;
+/* LOGO HANDLING */
+.nav-logo img {
   height: 40px;
-  background: linear-gradient(135deg,#2563eb,#14b8a6);
-  color: #fff;
+  transition: filter 0.3s ease;
+  /* IMPORTANT: Inverts dark logo to white for the transparent Home header */
+  filter: brightness(0) invert(1);
+}
+
+/* Reset logo to original dark color on white pages/scrolled */
+.navbar.scrolled .nav-logo img {
+  filter: none;
+}
+
+/* DESKTOP LINKS */
+.nav-links {
   display: flex;
   align-items: center;
-  justify-content: center;
-  border-radius: 8px;
+  gap: 32px;
 }
 
-.links {
-  display: flex;
-  gap: 30px;
+/* Link Color: Default (White) */
+.nav-links a {
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  position: relative;
+  transition: color 0.3s ease;
 }
 
-.links a:hover {
-  color: #2563eb;
+/* Link Color: On White Background (Dark Green) */
+.navbar.scrolled .nav-links a {
+  color: #022c22; /* Emerald 950 */
 }
 
+/* Active Link Text Color */
+.navbar.scrolled .nav-links a.active {
+  color: #059669; /* Emerald 600 - Makes "Technology" green */
+  font-weight: 600;
+}
+
+/* HOVER & ACTIVE UNDERLINE */
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 2px;
+  background: #34d399; /* Bright Emerald Line */
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+  transform: scaleX(1);
+}
+
+/* CTA BUTTON */
+.nav-cta {
+  margin-left: 20px;
+  padding: 10px 24px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #059669, #047857); 
+  color: white !important; /* Text inside button always white */
+  font-weight: 600 !important;
+  box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3);
+  transition: transform 0.2s ease;
+}
+
+.nav-cta:hover {
+  transform: translateY(-1px);
+}
+
+.nav-cta::after {
+  display: none; /* No underline for button */
+}
+
+/* MOBILE RESPONSIVE */
 .menu-btn {
   display: none;
   background: none;
   border: none;
+  cursor: pointer;
+  padding: 4px;
 }
 
-@media (max-width: 768px) {
-  .links {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background: white;
-    flex-direction: column;
-    padding: 20px;
-    display: none;
-  }
-  .links.open {
-    display: flex;
-  }
-  .menu-btn {
-    display: block;
-  }
+/* DRAWER STYLES */
+.mobile-drawer {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 280px;
+  height: 100vh;
+  background: #064e3b;
+  color: white;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 999;
+}
+
+.mobile-drawer.open { right: 0; }
+
+.mobile-drawer a {
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  padding-bottom: 12px;
+}
+
+.nav-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 44, 34, 0.7);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 998;
+}
+
+.nav-backdrop.show { opacity: 1; pointer-events: auto; }
+
+@media (max-width: 900px) {
+  .nav-links { display: none; }
+  .menu-btn { display: block; }
 }

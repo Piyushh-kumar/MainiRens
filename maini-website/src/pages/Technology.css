@@ -1,179 +1,388 @@
-.technology {
-  background: #020617;
+:root {
+  /* --- Palette from the Blueprint Design applied to Modern Layout --- */
+  --tex-primary: #059669;       /* Emerald Green (Main Action) */
+  --tex-primary-light: #ecfdf5; /* Mint Green (Backgrounds/Bubbles) */
+  --tex-accent: #0d9488;        /* Deep Teal (Accents/Gradients) */
+  --tex-text-dark: #111827;     /* Dark Gray */
+  --tex-text-gray: #4b5563;     /* Slate Gray */
+  --tex-bg-soft: #f9fafb;       /* Very Light Gray/White surface */
+  --tex-white: #ffffff;
+  
+  /* Shadows with a hint of green */
+  --tex-shadow-card: 0 10px 30px -5px rgba(5, 150, 105, 0.08);
+  --tex-shadow-hover: 0 20px 40px -5px rgba(5, 150, 105, 0.15);
+}
+
+.tex-section {
+  position: relative;
+  padding: 7rem 0;
+  background-color: var(--tex-bg-soft);
+  font-family: 'Inter', sans-serif;
+  overflow: hidden;
+  color: var(--tex-text-dark);
+}
+
+/* Background Decoration - Soft Green Blob */
+.tex-bg-blob {
+  position: absolute;
+  top: -10%;
+  right: -5%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(5, 150, 105, 0.08) 0%, rgba(255,255,255,0) 70%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.tex-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* --- Header --- */
+.tex-header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 5rem auto;
+}
+
+.tex-label-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--tex-white);
+  padding: 6px 16px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--tex-primary);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(5, 150, 105, 0.1);
+}
+
+.tex-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--tex-accent);
+  border-radius: 50%;
+  animation: tex-pulse 2s infinite;
+}
+
+.tex-header h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+}
+
+/* Gradient Text: Emerald to Teal */
+.tex-text-gradient {
+  background: linear-gradient(135deg, var(--tex-primary) 0%, var(--tex-accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.tex-header p {
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: var(--tex-text-gray);
+}
+
+/* --- Feature Grid --- */
+.tex-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  margin-bottom: 6rem;
+}
+
+.tex-card {
+  background: var(--tex-white);
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: var(--tex-shadow-card);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(5, 150, 105, 0.05); /* Subtle green border */
+}
+
+.tex-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--tex-shadow-hover);
+  border-color: rgba(5, 150, 105, 0.2);
+}
+
+.tex-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.tex-icon-circle {
+  width: 54px;
+  height: 54px;
+  background: var(--tex-primary-light);
+  color: var(--tex-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+}
+
+.tex-card-highlight {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--tex-accent);
+  background: var(--tex-primary-light);
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+.tex-card h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: var(--tex-text-dark);
+}
+
+.tex-card p {
+  font-size: 0.95rem;
+  color: var(--tex-text-gray);
+  line-height: 1.5;
+}
+
+/* --- Deployment Section --- */
+.tex-deployment-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  background: var(--tex-white);
+  border-radius: 32px;
+  padding: 1rem;
+  box-shadow: var(--tex-shadow-card);
+  border: 1px solid rgba(5, 150, 105, 0.05);
+}
+
+.tex-deployment-content {
+  padding: 3rem 0 3rem 3rem;
+}
+
+.tex-section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--tex-accent);
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.tex-deployment-content h2 {
+  font-size: 2.25rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  color: var(--tex-text-dark);
+}
+
+.tex-deployment-content p {
+  color: var(--tex-text-gray);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  font-size: 1.05rem;
+}
+
+.tex-check-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.tex-check-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  color: var(--tex-text-dark);
+  font-size: 0.95rem;
+}
+
+.tex-check-icon {
+  color: var(--tex-primary);
+  width: 20px;
+  height: 20px;
+}
+
+.tex-primary-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--tex-primary);
   color: white;
-  padding: 120px 0;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 14px rgba(5, 150, 105, 0.3);
+}
+
+.tex-primary-btn:hover {
+  background: var(--tex-accent);
+  transform: translateY(-2px);
+}
+
+/* --- Visual Graphic (Green Gradient) --- */
+.tex-visual-container {
+  height: 100%;
+  min-height: 400px;
+  /* Gradient: Mint to Teal-ish White */
+  background: linear-gradient(135deg, #f0fdf4 0%, #e6fffa 100%);
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
   overflow: hidden;
 }
 
-/* Header */
-.tech-header span {
-  color: #38bdf8;
-  font-weight: 700;
-  letter-spacing: 2px;
-  font-size: 13px;
-}
-
-.tech-header h1 {
-  font-size: 48px;
-  margin: 12px 0;
-}
-
-.tech-header p {
-  color: #cbd5e1;
-  max-width: 600px;
-  font-size: 18px;
-}
-
-/* Features */
-.tech-features {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-  margin-top: 60px;
-}
-
-.tech-card {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.1);
-  padding: 24px;
-  border-radius: 14px;
-  transition: 0.3s;
-}
-
-.tech-card:hover {
-  border-color: #38bdf8;
-}
-
-.tech-card .icon {
-  width: 48px;
-  height: 48px;
-  background: rgba(56,189,248,0.15);
+.tex-glass-panel {
+  position: relative;
+  width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 10px;
-  color: #38bdf8;
-  margin-bottom: 16px;
 }
 
-.tech-card h3 {
-  font-size: 20px;
-  margin-bottom: 10px;
-}
-
-.tech-card p {
-  font-size: 14px;
-  color: #94a3b8;
-}
-
-/* Deployment Section */
-.tech-deploy {
-  margin-top: 100px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  align-items: center;
-}
-
-.deploy-text h2 {
-  display: flex;
-  gap: 10px;
-  font-size: 32px;
-  margin-bottom: 16px;
-}
-
-.deploy-text p {
-  color: #cbd5e1;
-  margin-bottom: 20px;
-}
-
-.deploy-text ul {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.deploy-text li {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  color: #e2e8f0;
-}
-
-.deploy-text svg {
-  color: #22c55e;
-}
-
-/* Turbine Animation */
-.deploy-visual {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-}
-
-.outer-ring {
+.tex-turbine-graphic {
+  position: relative;
   width: 220px;
   height: 220px;
-  border: 3px solid rgba(56,189,248,0.3);
-  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  animation: spin 12s linear infinite;
 }
 
-.inner-ring {
-  width: 150px;
-  height: 150px;
-  border: 3px solid rgba(20,184,166,0.3);
+.tex-circle {
+  position: absolute;
   border-radius: 50%;
+}
+
+.tex-c-outer {
+  width: 100%;
+  height: 100%;
+  border: 2px solid rgba(5, 150, 105, 0.1);
+  background: rgba(255,255,255, 0.3);
+}
+
+.tex-c-mid {
+  width: 65%;
+  height: 65%;
+  border: 12px solid rgba(255,255,255, 0.6);
+  border-top-color: var(--tex-primary); /* Spinner effect */
+  animation: tex-spin 8s linear infinite;
+}
+
+.tex-c-core {
+  width: 35%;
+  height: 35%;
+  background: var(--tex-white);
   display: flex;
   align-items: center;
   justify-content: center;
-  animation: spinReverse 6s linear infinite;
+  color: var(--tex-primary);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+  z-index: 10;
 }
 
-.inner-ring svg {
-  color: white;
-  width: 40px;
-  height: 40px;
+.tex-orbit-dot {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  background: var(--tex-accent);
+  border-radius: 50%;
+  transform-origin: 0 110px; /* Radius of outer circle */
+  animation: tex-spin 4s linear infinite;
 }
 
-.deploy-visual span {
-  font-size: 12px;
-  color: #94a3b8;
+.tex-stat-floater {
+  position: absolute;
+  bottom: 40px;
+  right: 40px;
+  background: var(--tex-white);
+  padding: 12px 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: tex-float 4s ease-in-out infinite;
 }
 
-/* Animations */
-@keyframes spin {
+.tex-stat-num {
+  font-weight: 800;
+  color: var(--tex-primary);
+  font-size: 1.25rem;
+}
+.tex-stat-label {
+  font-size: 0.75rem;
+  color: var(--tex-text-gray);
+  text-transform: uppercase;
+}
+
+@keyframes tex-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
 
-@keyframes spinReverse {
-  from { transform: rotate(360deg); }
-  to { transform: rotate(0deg); }
+@keyframes tex-pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.5); opacity: 0.5; }
+  100% { transform: scale(1); opacity: 1; }
 }
 
-/* Responsive */
-@media (max-width: 900px) {
-  .tech-features {
+@keyframes tex-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* --- Responsive --- */
+@media (max-width: 1024px) {
+  .tex-feature-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  .tech-deploy {
+  .tex-deployment-wrapper {
     grid-template-columns: 1fr;
-    text-align: center;
+    padding: 0;
+    overflow: hidden;
   }
-  .deploy-text h2 {
-    justify-content: center;
+  .tex-deployment-content {
+    padding: 2rem;
+  }
+  .tex-visual-container {
+    min-height: 300px;
+    border-radius: 0 0 32px 32px;
   }
 }
 
-@media (max-width: 500px) {
-  .tech-features {
+@media (max-width: 640px) {
+  .tex-feature-grid {
     grid-template-columns: 1fr;
+  }
+  .tex-header h1 {
+    font-size: 2.25rem;
   }
 }

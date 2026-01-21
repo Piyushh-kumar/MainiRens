@@ -1,108 +1,362 @@
-.about {
-  background: #020617;
-  color: white;
-  padding: 120px 0;
+/* --- Scoped Variables --- */
+:root {
+  --abt-primary: #059669;       /* Emerald Green */
+  --abt-primary-dark: #047857;  /* Darker Emerald */
+  --abt-accent: #0d9488;        /* Teal */
+  --abt-bg: #ffffff;            /* White Background */
+  --abt-surface: #f0fdf4;       /* Light Mint Surface */
+  --abt-text-main: #111827;     /* Black/Gray */
+  --abt-text-muted: #4b5563;    /* Slate Gray */
+  --abt-border: #e5e7eb;
+  
+  /* Shadows */
+  --abt-shadow: 0 10px 30px -5px rgba(5, 150, 105, 0.1);
+  --abt-shadow-strong: 0 20px 40px -5px rgba(13, 148, 136, 0.25);
 }
 
-.about-grid {
+.abt-section {
+  background-color: var(--abt-bg);
+  color: var(--abt-text-main);
+  padding: 8rem 0;
+  font-family: 'Inter', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.abt-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* --- Top Grid (Leadership) --- */
+.abt-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 60px;
+  gap: 5rem;
+  align-items: center;
+  margin-bottom: 8rem; /* Spacing before next section */
+}
+
+/* Left Column */
+.abt-text-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.abt-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--abt-accent);
+  background: var(--abt-surface);
+  padding: 6px 14px;
+  border-radius: 50px;
+  width: fit-content;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(13, 148, 136, 0.15);
+}
+
+.abt-badge-dot {
+  width: 6px;
+  height: 6px;
+  background-color: var(--abt-primary);
+  border-radius: 50%;
+}
+
+.abt-text-col h1 {
+  font-size: 3.5rem;
+  line-height: 1.1;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+  color: var(--abt-text-main);
+}
+
+.abt-text-gradient {
+  background: linear-gradient(135deg, var(--abt-primary) 0%, var(--abt-accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.abt-description {
+  color: var(--abt-text-muted);
+  font-size: 1.125rem;
+  line-height: 1.7;
+  margin-bottom: 3rem;
+  max-width: 540px;
+}
+
+/* Stats Cards */
+.abt-cards-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.abt-stat-card {
+  background: #fff;
+  border: 1px solid var(--abt-border);
+  padding: 1.5rem;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+}
+
+.abt-stat-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--abt-primary);
+  box-shadow: var(--abt-shadow);
+}
+
+.abt-icon-box {
+  width: 48px;
+  height: 48px;
+  background: var(--abt-surface);
+  color: var(--abt-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+}
+
+.abt-stat-card h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.abt-stat-card span {
+  font-size: 0.9rem;
+  color: var(--abt-text-muted);
+}
+
+/* Right Highlight Card */
+.abt-highlight-col {
+  display: flex;
+  justify-content: center;
+}
+
+.abt-promo-card {
+  background: linear-gradient(135deg, var(--abt-primary) 0%, var(--abt-accent) 100%);
+  width: 100%;
+  padding: 4rem 3rem;
+  border-radius: 32px;
+  color: white;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--abt-shadow-strong);
+  transition: transform 0.4s ease;
+}
+
+.abt-promo-card:hover {
+  transform: scale(1.02);
+}
+
+.abt-card-deco {
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 200px;
+  height: 200px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.abt-promo-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
   align-items: center;
 }
 
-/* Text */
-.about-text h1 {
-  font-size: 42px;
-  margin-bottom: 20px;
+.abt-promo-icon {
+  background: rgba(255, 255, 255, 0.2);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  backdrop-filter: blur(4px);
+  color: #fff;
 }
 
-.about-text p {
-  color: #cbd5e1;
-  font-size: 17px;
-  line-height: 1.7;
-  margin-bottom: 40px;
+.abt-promo-card h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  line-height: 1.2;
 }
 
-/* Cards */
-.about-cards {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
+.abt-promo-card p {
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 2.5rem;
+  font-size: 1.05rem;
+  line-height: 1.6;
 }
 
-.about-card {
-  background: #020617;
-  border: 1px solid #1e293b;
-  padding: 24px;
-  border-radius: 14px;
-}
-
-.about-card svg {
-  color: #38bdf8;
-  margin-bottom: 12px;
-}
-
-.about-card h3 {
-  font-size: 18px;
-  margin-bottom: 6px;
-}
-
-.about-card span {
-  font-size: 13px;
-  color: #94a3b8;
-}
-
-/* Highlight */
-.about-highlight {
-  background: linear-gradient(135deg,#2563eb,#14b8a6);
-  padding: 2px;
-  border-radius: 20px;
-  transform: rotate(2deg);
-  transition: 0.4s;
-}
-
-.about-highlight:hover {
-  transform: rotate(0deg);
-}
-
-.highlight-box {
-  background: #020617;
-  padding: 50px;
-  border-radius: 18px;
-  text-align: center;
-}
-
-.highlight-box h2 {
-  font-size: 28px;
-  margin-bottom: 14px;
-}
-
-.highlight-box p {
-  color: #94a3b8;
-  margin-bottom: 30px;
-}
-
-.highlight-box button {
+.abt-action-btn {
   background: white;
-  color: #020617;
-  padding: 14px 28px;
-  border-radius: 999px;
+  color: var(--abt-primary);
+  padding: 14px 32px;
+  border-radius: 12px;
   font-weight: 700;
+  font-size: 1rem;
   border: none;
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
-.highlight-box button:hover {
-  background: #e0f2fe;
+.abt-action-btn:hover {
+  background: var(--abt-surface);
+  gap: 14px;
+  color: var(--abt-primary-dark);
 }
 
-/* Responsive */
-@media (max-width: 900px) {
-  .about-grid {
+/* --- New Section: Mission (What We Do) --- */
+.abt-mission-section {
+  text-align: center;
+  margin-bottom: 6rem;
+}
+
+.abt-mission-header h2 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  color: var(--abt-text-main);
+}
+
+.abt-mission-header p {
+  font-size: 1.25rem;
+  color: var(--abt-text-muted);
+  max-width: 700px;
+  margin: 0 auto 4rem auto;
+  line-height: 1.6;
+}
+
+.abt-features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.abt-feature-item {
+  background: var(--abt-surface);
+  padding: 2.5rem 2rem;
+  border-radius: 20px;
+  border: 1px solid rgba(13, 148, 136, 0.1);
+  transition: transform 0.3s;
+}
+
+.abt-feature-item:hover {
+  transform: translateY(-5px);
+  background: #fff;
+  box-shadow: var(--abt-shadow);
+}
+
+.feature-icon {
+  color: var(--abt-primary);
+  width: 40px;
+  height: 40px;
+  margin-bottom: 1.5rem;
+}
+
+.abt-feature-item h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--abt-text-main);
+}
+
+.abt-feature-item p {
+  color: var(--abt-text-muted);
+  line-height: 1.6;
+}
+
+/* --- New Section: Partners --- */
+.abt-partners-section {
+  text-align: center;
+  padding-top: 2rem;
+  border-top: 1px solid var(--abt-border);
+}
+
+.abt-partners-label {
+  display: block;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--abt-text-muted);
+  margin-bottom: 2rem;
+  font-weight: 600;
+}
+
+.abt-partners-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 3rem;
+  opacity: 0.7;
+}
+
+.partner-logo {
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--abt-text-muted);
+  /* Note: In a real app, replace these text divs with <img /> tags */
+}
+
+/* --- Responsive --- */
+@media (max-width: 968px) {
+  .abt-grid {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+  
+  .abt-text-col {
+    align-items: center;
+    text-align: center;
+  }
+  
+  .abt-description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .abt-cards-row {
+    width: 100%;
+    max-width: 600px;
+  }
+
+  .abt-features-grid {
     grid-template-columns: 1fr;
   }
-  .about-highlight {
-    transform: rotate(0deg);
+}
+
+@media (max-width: 600px) {
+  .abt-text-col h1 {
+    font-size: 2.5rem;
+  }
+  
+  .abt-cards-row {
+    grid-template-columns: 1fr;
+  }
+  
+  .abt-promo-card {
+    padding: 3rem 1.5rem;
   }
 }

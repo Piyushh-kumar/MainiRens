@@ -1,81 +1,117 @@
 import './Technology.css';
-import { Droplets, Leaf, Zap, Globe, Wind, CheckCircle } from 'lucide-react';
+import { Droplets, Leaf, Zap, Globe, Wind, CheckCircle2, ArrowRight } from 'lucide-react';
 
 export default function Technology() {
   const features = [
     {
-      icon: <Droplets />,
-      title: 'No Dams Required',
-      desc: 'Damless® technology preserves natural water flow without large infrastructure.'
+      icon: <Droplets size={28} />,
+      title: 'Zero Dams',
+      highlight: 'Natural Flow',
+      desc: 'Preserves the natural course of water. No reservoirs or massive concrete infrastructure required.'
     },
     {
-      icon: <Leaf />,
+      icon: <Leaf size={28} />,
       title: 'Aquatic Safe',
-      desc: 'Fish-friendly turbines ensure zero harm to aquatic ecosystems.'
+      highlight: '100% Eco-Friendly',
+      desc: 'Fish-friendly turbine geometry ensures absolute safety for local aquatic ecosystems and biodiversity.'
     },
     {
-      icon: <Zap />,
+      icon: <Zap size={28} />,
       title: 'High Efficiency',
-      desc: 'Vertical-axis turbines optimized for low-speed flow environments.'
+      highlight: 'Baseload Power',
+      desc: 'Vertical-axis torque optimized for low-velocity water streams to generate consistent energy.'
     },
     {
-      icon: <Globe />,
-      title: 'Geographically Adaptable',
-      desc: 'Works in canals, rivers, industrial outflows, and open channels.'
+      icon: <Globe size={28} />,
+      title: 'Modular Fit',
+      highlight: 'Plug & Play',
+      desc: 'Adaptable design that fits seamlessly into canals, rivers, industrial outflows, and weirs.'
     }
   ];
 
   return (
-    <section className="technology">
-      <div className="container">
+    <section className="tex-section">
+      {/* Decorative Background Blob (Green/Teal) */}
+      <div className="tex-bg-blob"></div>
 
+      <div className="tex-container">
+        
         {/* Header */}
-        <div className="tech-header">
-          <span>OUR CORE TECHNOLOGY</span>
-          <h1>Patented Damless® Turbine</h1>
+        <div className="tex-header">
+          <div className="tex-label-pill">
+            <span className="tex-dot"></span> Sustainable Hydro
+          </div>
+          <h1>
+            Engineering <span className="tex-text-gradient">Nature's Flow</span>
+          </h1>
           <p>
-            A proprietary vertical-axis turbine engineered to generate reliable,
-            continuous power while remaining environmentally responsible.
+            The Damless® turbine combines proprietary hydro-mechanics with ecological preservation. 
+            A robust solution designed for the future of decentralized energy.
           </p>
         </div>
 
         {/* Feature Cards */}
-        <div className="tech-features">
+        <div className="tex-feature-grid">
           {features.map((item, i) => (
-            <div key={i} className="tech-card">
-              <div className="icon">{item.icon}</div>
+            <div key={i} className="tex-card">
+              <div className="tex-card-header">
+                <div className="tex-icon-circle">{item.icon}</div>
+                <span className="tex-card-highlight">{item.highlight}</span>
+              </div>
               <h3>{item.title}</h3>
               <p>{item.desc}</p>
             </div>
           ))}
         </div>
 
-        {/* Versatile Deployment */}
-        <div className="tech-deploy">
-          <div className="deploy-text">
-            <h2>
-              <Wind /> Versatile Deployment
-            </h2>
+        {/* Deployment / Visual Section */}
+        <div className="tex-deployment-wrapper">
+          <div className="tex-deployment-content">
+            <div className="tex-section-tag">
+              <Wind size={18} /> <span>Versatile Integration</span>
+            </div>
+            <h2>Deploy Anywhere</h2>
             <p>
-              Designed for both hydrokinetic and wind applications, our turbines
-              can be deployed across diverse environments.
+              Our modular units adapt to diverse kinetic environments, functioning effectively 
+              in both hydraulic and aerodynamic applications.
             </p>
 
-            <ul>
-              <li><CheckCircle /> Rooftops & Highways</li>
-              <li><CheckCircle /> Irrigation Canals & Rivers</li>
-              <li><CheckCircle /> Industrial Water Outflows</li>
-            </ul>
-          </div>
-
-          {/* Abstract Turbine */}
-          <div className="deploy-visual">
-            <div className="outer-ring">
-              <div className="inner-ring">
-                <Zap />
+            <div className="tex-check-grid">
+              <div className="tex-check-item">
+                <CheckCircle2 className="tex-check-icon" /> <span>Irrigation Canals</span>
+              </div>
+              <div className="tex-check-item">
+                <CheckCircle2 className="tex-check-icon" /> <span>Riverine Systems</span>
+              </div>
+              <div className="tex-check-item">
+                <CheckCircle2 className="tex-check-icon" /> <span>Industrial Effluents</span>
+              </div>
+              <div className="tex-check-item">
+                <CheckCircle2 className="tex-check-icon" /> <span>Wind Hybrid Units</span>
               </div>
             </div>
-            <span>Abstract Turbine Visualization</span>
+
+            <button className="tex-primary-btn">
+              View Technical Specs <ArrowRight size={18} />
+            </button>
+          </div>
+
+          {/* 3D-style Graphic */}
+          <div className="tex-visual-container">
+            <div className="tex-glass-panel">
+              <div className="tex-turbine-graphic">
+                <div className="tex-circle tex-c-outer"></div>
+                <div className="tex-circle tex-c-mid"></div>
+                <div className="tex-circle tex-c-core">
+                  <Zap size={32} fill="currentColor" />
+                </div>
+                <div className="tex-orbit-dot"></div>
+              </div>
+              <div className="tex-stat-floater">
+                <span className="tex-stat-num">98%</span>
+                <span className="tex-stat-label">Eco-Safety</span>
+              </div>
+            </div>
           </div>
         </div>
 

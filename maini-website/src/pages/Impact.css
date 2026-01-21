@@ -1,170 +1,303 @@
-.impact {
-  background: #f8fafc;
-  padding: 120px 0;
+/* --- Variables & Theme --- */
+:root {
+  --primary-blue: #0ea5e9;
+  --primary-dark: #0f172a;
+  --text-main: #334155;
+  --text-muted: #64748b;
+  --bg-surface: #f8fafc;
+  
+  /* Official UN SDG Colors */
+  --sdg-7-yellow: #fcc30b;
+  --sdg-11-orange: #fd9d24;
+  --sdg-13-green: #3f7e44;
 }
 
-/* Header */
+/* --- Base Layout --- */
+.impact {
+  padding: 6rem 0;
+  background-color: #fff;
+  color: var(--text-main);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* --- Header Section --- */
 .impact-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  margin-bottom: 50px;
+  margin-bottom: 4rem;
+  flex-wrap: wrap;
+  gap: 2rem;
 }
 
 .impact-header h1 {
-  font-size: 40px;
-  margin-bottom: 10px;
+  font-size: 2.75rem;
+  font-weight: 800;
+  color: var(--primary-dark);
+  margin-bottom: 1rem;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
 }
 
 .impact-header p {
+  font-size: 1.125rem;
+  color: var(--text-muted);
   max-width: 500px;
-  color: #475569;
+  line-height: 1.6;
 }
 
-/* Tabs */
+/* --- Tabs Design --- */
 .impact-tabs {
-  background: white;
-  padding: 6px;
-  border-radius: 10px;
+  background: var(--bg-surface);
+  padding: 0.5rem;
+  border-radius: 99px; /* Pill shape */
   display: flex;
-  gap: 6px;
-  border: 1px solid #e2e8f0;
+  gap: 0.25rem;
 }
 
 .impact-tabs button {
-  padding: 10px 22px;
-  border-radius: 8px;
   border: none;
-  cursor: pointer;
-  font-weight: 600;
   background: transparent;
-  color: #475569;
+  padding: 0.75rem 1.75rem;
+  border-radius: 99px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.impact-tabs .active.hydro {
-  background: #2563eb;
-  color: white;
+.impact-tabs button:hover {
+  color: var(--primary-dark);
 }
 
-.impact-tabs .active.sdg {
-  background: #16a34a;
-  color: white;
+/* Tab Active States */
+.impact-tabs button.active {
+  background: #fff;
+  color: var(--primary-dark);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-/* Hydro */
+/* Specific highlight colors for active tabs */
+.impact-tabs button.active.hydro { color: var(--primary-blue); }
+.impact-tabs button.active.sdg { color: var(--sdg-13-green); }
+
+/* --- Content Wrapper (Animation) --- */
+.impact-content {
+  animation: fadeSlideUp 0.5s ease-out forwards;
+}
+
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Tab 1: Hydro Layout --- */
 .hydro-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 50px;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 5rem;
+  align-items: center;
 }
 
 .hydro-text h2 {
-  font-size: 28px;
-  margin-bottom: 12px;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary-dark);
+  margin-bottom: 1rem;
 }
 
 .hydro-text p {
-  color: #475569;
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
 }
 
+/* Stats Row */
 .hydro-stats {
-  margin-top: 30px;
   display: grid;
-  gap: 14px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid #e2e8f0;
 }
 
 .hydro-stats div {
-  background: #eff6ff;
-  padding: 16px;
-  border-radius: 10px;
   display: flex;
-  justify-content: space-between;
-}
-
-.hydro-stats div.green {
-  background: #ecfdf5;
+  flex-direction: column;
 }
 
 .hydro-stats span {
-  color: #475569;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+  font-weight: 600;
 }
 
 .hydro-stats strong {
-  color: #1d4ed8;
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--primary-dark);
 }
 
 .hydro-stats .green strong {
-  color: #15803d;
+  color: var(--primary-blue); /* Branding accent */
 }
 
-/* Visual */
-.hydro-visual {
-  background: url('https://images.unsplash.com/photo-1595116962319-38b4d8122c54');
-  background-size: cover;
-  background-position: center;
-  border-radius: 16px;
-  position: relative;
-}
-
+/* Visual Card (Chart) */
 .visual-card {
-  background: rgba(255,255,255,0.95);
-  padding: 30px;
-  border-radius: 14px;
-  max-width: 260px;
-  position: absolute;
-  bottom: 30px;
-  left: 30px;
-  text-align: center;
+  background: linear-gradient(145deg, #f0f9ff 0%, #e0f2fe 100%);
+  border: 1px solid #bae6fd;
+  padding: 3rem;
+  border-radius: 24px;
+  box-shadow: 0 20px 40px -10px rgba(14, 165, 233, 0.15);
+  position: relative;
+  overflow: hidden;
 }
 
+/* Decorative SVG Icon */
 .visual-card svg {
-  color: #2563eb;
-  margin-bottom: 10px;
+  width: 56px;
+  height: 56px;
+  color: var(--primary-blue);
+  background: #fff;
+  padding: 12px;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
 }
 
-/* SDGs */
+.visual-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: var(--primary-dark);
+}
+
+.visual-card p {
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+/* --- Tab 2: SDG Layout --- */
 .sdg-grid {
   display: grid;
-  grid-template-columns: repeat(3,1fr);
-  gap: 30px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
 }
 
 .sdg-card {
-  padding: 30px;
-  border-radius: 16px;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  padding: 2.5rem 2rem;
+  border-radius: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
+.sdg-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+  border-color: transparent;
+}
+
+/* SDG Number Square */
 .sdg-number {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #fff;
   width: 50px;
   height: 50px;
-  border-radius: 10px;
-  color: white;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 800;
-  margin-bottom: 16px;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }
 
-.yellow { background: #fff7ed; }
-.yellow .sdg-number { background: #f59e0b; }
+/* SDG Themes (Using official Colors) */
+.sdg-card.yellow .sdg-number { background-color: var(--sdg-7-yellow); }
+.sdg-card.orange .sdg-number { background-color: var(--sdg-11-orange); }
+.sdg-card.green .sdg-number  { background-color: var(--sdg-13-green); }
 
-.orange { background: #fff1f2; }
-.orange .sdg-number { background: #f97316; }
+/* Bottom border accent on hover */
+.sdg-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
 
-.green { background: #ecfdf5; }
-.green .sdg-number { background: #16a34a; }
+.sdg-card:hover::after { transform: scaleX(1); }
+.sdg-card.yellow::after { background-color: var(--sdg-7-yellow); }
+.sdg-card.orange::after { background-color: var(--sdg-11-orange); }
+.sdg-card.green::after  { background-color: var(--sdg-13-green); }
 
-/* Responsive */
-@media (max-width: 900px) {
+.sdg-card h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary-dark);
+  margin-bottom: 0.75rem;
+}
+
+.sdg-card p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 968px) {
   .impact-header {
     flex-direction: column;
-    gap: 20px;
+    align-items: flex-start;
   }
+  
   .hydro-grid {
     grid-template-columns: 1fr;
+    gap: 3rem;
   }
+  
+  .sdg-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .impact-header h1 { font-size: 2rem; }
+  
+  .hydro-stats {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
   .sdg-grid {
     grid-template-columns: 1fr;
+  }
+  
+  .impact-tabs {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .impact-tabs button {
+    flex: 1;
+    text-align: center;
   }
 }
