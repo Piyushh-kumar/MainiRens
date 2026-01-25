@@ -15,7 +15,7 @@ import heroo2 from '../assets/hero2.mp4';
 import canalImage from '../assets/canal.png';
 
 // Partner Logos
-import iitRoorkeeImg from '../assets/iit-roorkee.png';
+import iitRoorkeeImg from '../assets/iit-roorkeee.png';
 import startupIndiaImg from '../assets/startup-india.png';
 import niotChennaiImg from '../assets/NIOT-chennai.png';
 import hdfcSmartUpImg from '../assets/HDFC smart up.png';
