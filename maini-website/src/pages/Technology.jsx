@@ -1,7 +1,20 @@
+import React, { useState } from 'react';
 import './Technology.css';
-import { Droplets, Leaf, Zap, Globe, Wind, CheckCircle2, ArrowRight } from 'lucide-react';
+import { 
+  Droplets, 
+  Leaf, 
+  Zap, 
+  Globe, 
+  Wind, 
+  CheckCircle2, 
+  ArrowRight,
+  Waves,
+  X 
+} from 'lucide-react';
 
 export default function Technology() {
+  const [showSpecs, setShowSpecs] = useState(false);
+
   const features = [
     {
       icon: <Droplets size={28} />,
@@ -29,9 +42,30 @@ export default function Technology() {
     }
   ];
 
+  const turbines = [
+    {
+      icon: <Waves size={32} />,
+      title: 'Finned Turbine',
+      stats: '29.7% Efficiency', 
+      desc: 'Drag-based design optimized for controlled flow environments like irrigation canals. Maximizes surface area contact.'
+    },
+    {
+      icon: <Zap size={32} />,
+      title: 'Helical Turbine',
+      stats: '27% Efficiency',
+      desc: 'Spiral geometry ensures reduced vibration and continuous torque generation across variable flow speeds.'
+    },
+    {
+      icon: <Wind size={32} />,
+      title: 'Darrieus Turbine',
+      stats: '20% Efficiency',
+      desc: 'Lift-based turbine engineered for higher-velocity wind and hydrokinetic installations with minimal drag.'
+    }
+  ];
+
   return (
     <section className="tex-section">
-      {/* Decorative Background Blob (Green/Teal) */}
+      {/* Decorative Background Blob */}
       <div className="tex-bg-blob"></div>
 
       <div className="tex-container">
@@ -91,7 +125,10 @@ export default function Technology() {
               </div>
             </div>
 
-            <button className="tex-primary-btn">
+            <button 
+              className="tex-primary-btn"
+              onClick={() => setShowSpecs(true)}
+            >
               View Technical Specs <ArrowRight size={18} />
             </button>
           </div>
@@ -114,8 +151,47 @@ export default function Technology() {
             </div>
           </div>
         </div>
-
       </div>
+
+      {/* --- MODAL OVERLAY --- */}
+      {showSpecs && (
+        <div className="tex-modal-overlay" onClick={() => setShowSpecs(false)}>
+          <div className="tex-modal-container" onClick={(e) => e.stopPropagation()}>
+            
+            <div className="tex-modal-header">
+              <div className="tex-modal-title">
+                <h2>Core Turbine Models</h2>
+              </div>
+              <button className="tex-close-btn" onClick={() => setShowSpecs(false)}>
+                <X size={24} />
+              </button>
+            </div>
+
+            <div className="tex-modal-body">
+              <div className="tex-turbine-grid">
+                {turbines.map((t, i) => (
+                  <div key={i} className="tex-turbine-card">
+                    <div className="tex-turbine-visual">
+                      <div className="tex-turbine-icon-box">
+                        {t.icon}
+                      </div>
+                      <div className="tex-efficiency-badge">
+                         <span className="eff-label">Peak Eff.</span>
+                         <span className="eff-val">{t.stats}</span>
+                      </div>
+                    </div>
+                    <div className="tex-turbine-info">
+                      <span className="tex-tag">Proprietary</span>
+                      <h3>{t.title}</h3>
+                      <p>{t.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

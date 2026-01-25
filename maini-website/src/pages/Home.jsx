@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import {
-  Zap,
   Wind,
   Waves,
   Building2,
@@ -10,13 +9,28 @@ import {
 
 import './Home.css';
 
-// Assets (Make sure these paths are correct in your project)
+// Assets
 import heroo from '../assets/heroo.mp4';
 import heroo2 from '../assets/hero2.mp4';
 import canalImage from '../assets/canal.png';
 
+// Partner Logos
+import iitRoorkeeImg from '../assets/iit-roorkee.png';
+import startupIndiaImg from '../assets/startup-india.png';
+import niotChennaiImg from '../assets/NIOT-chennai.png';
+import hdfcSmartUpImg from '../assets/HDFC smart up.png';
+import aicJkluImg from '../assets/AIC-JKLU.png';
+
 export default function Home() {
   const [firstVideoEnded, setFirstVideoEnded] = useState(false);
+
+  const partners = [
+    { name: "IIT Roorkee", logo: iitRoorkeeImg },
+    { name: "Startup India", logo: startupIndiaImg },
+    { name: "NIOT Chennai", logo: niotChennaiImg },
+    { name: "HDFC SmartUp", logo: hdfcSmartUpImg },
+    { name: "AIC-JKLU", logo: aicJkluImg },
+  ];
 
   return (
     <>
@@ -98,59 +112,86 @@ export default function Home() {
       </section>
 
       {/* =====================================================
-          PARTNERS / TRUST
+          PARTNERS / TRUST (UPDATED DESIGN)
       ====================================================== */}
       <section className="partners-section">
         <div className="container">
           <p className="partners-title">Supported by Leading Institutions</p>
+          
           <div className="partners-grid">
-            <div className="partner-logo">IIT Roorkee</div>
-            <div className="partner-logo">Startup India</div>
-            <div className="partner-logo">NIOT Chennai</div>
-            <div className="partner-logo">HDFC SmartUp</div>
-            <div className="partner-logo">AIC-JKLU</div>
+             {partners.map((partner, index) => (
+               <div key={index} className="partner-card" title={partner.name}>
+                 <img 
+                   src={partner.logo} 
+                   alt={`${partner.name} logo`} 
+                   className="partner-logo-img" 
+                 />
+               </div>
+             ))}
           </div>
         </div>
       </section>
 
       {/* =====================================================
-          TECHNOLOGY SECTION
+          NEW SERVICES SECTION (Added Wind & Water)
       ====================================================== */}
-      <section className="tech-section container">
+      <section className="services-section container">
         <div className="section-header">
-          <h2>Our Core Technology</h2>
+          <h2>Our Services</h2>
           <p>
-            Proprietary Vertical Axis Turbines engineered for
-            hydrokinetic and wind energy applications.
+            Generating power right where you need it—whether from the breeze above or the water below.
           </p>
         </div>
 
-        <div className="tech-grid">
-          <div className="tech-card">
-            <div className="icon-box"><Waves size={32} /></div>
-            <h3>Finned Turbine</h3>
-            <p>
-              Drag-based design achieving ~29.7% efficiency in controlled
-              flow environments.
-            </p>
+        <div className="services-grid">
+          {/* Service 1: WIND */}
+          <div className="service-card">
+            <div className="service-content">
+              <div className="icon-box"><Wind size={32} /></div>
+              <h3>Wind Energy</h3>
+              <p>
+                Become a part of the solution. If you feel the wind on your rooftop,
+                with a wind turbine you can produce energy for your needs, occupying
+                no more space than your water tank and providing you with electrons.
+              </p>
+            </div>
+            <div className="service-video-wrapper">
+              <iframe 
+                width="100%" 
+                height="100%" 
+                src="https://www.youtube.com/embed/uJJeYQqAAE8" 
+                title="Wind Turbine Demo" 
+                frameBorder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                referrerPolicy="strict-origin-when-cross-origin" 
+                allowFullScreen
+              ></iframe>
+            </div>
           </div>
 
-          <div className="tech-card">
-            <div className="icon-box"><Zap size={32} /></div>
-            <h3>Helical Turbine</h3>
-            <p>
-              Spiral geometry ensuring smooth torque and reduced vibration
-              across variable flow speeds.
-            </p>
-          </div>
-
-          <div className="tech-card">
-            <div className="icon-box"><Wind size={32} /></div>
-            <h3>Darrieus Turbine</h3>
-            <p>
-              Lift-based turbine suitable for higher-velocity wind and
-              hydrokinetic installations.
-            </p>
+          {/* Service 2: WATER */}
+          <div className="service-card reverse">
+            <div className="service-content">
+              <div className="icon-box"><Waves size={32} /></div>
+              <h3>Hydro Energy</h3>
+              <p>
+                With flowing water running near your property, you can harness its flow
+                and produce your own power. Anywhere you see water flowing, we see
+                potential to produce electricity with our Damless Turbines.
+              </p>
+            </div>
+            <div className="service-video-wrapper">
+              <iframe 
+                width="100%" 
+                height="100%" 
+                src="https://www.youtube.com/embed/3nBkx3V9E48" 
+                title="Water Turbine Demo" 
+                frameBorder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                referrerPolicy="strict-origin-when-cross-origin" 
+                allowFullScreen
+              ></iframe>
+            </div>
           </div>
         </div>
       </section>

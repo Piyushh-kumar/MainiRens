@@ -35,7 +35,7 @@
   grid-template-columns: 1fr 1fr;
   gap: 5rem;
   align-items: center;
-  margin-bottom: 8rem; /* Spacing before next section */
+  margin-bottom: 8rem;
 }
 
 /* Left Column */
@@ -81,6 +81,54 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+/* --- Founder Profile Styles (UPDATED SIZE) --- */
+.abt-founder-row {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--abt-border);
+  width: fit-content;
+}
+
+.abt-founder-img-wrapper {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  padding: 3px;
+  background: linear-gradient(135deg, var(--abt-primary), var(--abt-accent));
+  flex-shrink: 0; 
+}
+
+.abt-founder-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+.abt-founder-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.abt-founder-name {
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--abt-text-main);
+  line-height: 1.2;
+}
+
+.abt-founder-role {
+  font-size: 0.9rem; 
+  color: var(--abt-primary);
+  font-weight: 600;
+}
+/* ----------------------------------- */
 
 .abt-description {
   color: var(--abt-text-muted);
@@ -201,31 +249,10 @@
 
 .abt-promo-card p {
   color: rgba(255, 255, 255, 0.9);
-  margin-bottom: 2.5rem;
+  /* Removed bottom margin previously used for button spacing */
+  margin-bottom: 0; 
   font-size: 1.05rem;
   line-height: 1.6;
-}
-
-.abt-action-btn {
-  background: white;
-  color: var(--abt-primary);
-  padding: 14px 32px;
-  border-radius: 12px;
-  font-weight: 700;
-  font-size: 1rem;
-  border: none;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-
-.abt-action-btn:hover {
-  background: var(--abt-surface);
-  gap: 14px;
-  color: var(--abt-primary-dark);
 }
 
 /* --- New Section: Mission (What We Do) --- */
@@ -317,7 +344,6 @@
   font-weight: 700;
   font-size: 1.2rem;
   color: var(--abt-text-muted);
-  /* Note: In a real app, replace these text divs with <img /> tags */
 }
 
 /* --- Responsive --- */
@@ -330,6 +356,11 @@
   .abt-text-col {
     align-items: center;
     text-align: center;
+  }
+  
+  /* Center the Founder row on mobile */
+  .abt-founder-row {
+    margin: 0 auto 2rem auto;
   }
   
   .abt-description {
@@ -358,5 +389,116 @@
   
   .abt-promo-card {
     padding: 3rem 1.5rem;
+  }
+}
+
+/* ... [Keep all previous CSS the same up until .abt-partners-section] ... */
+
+/* --- New Section: Partners (PREMIUM DESIGN) --- */
+/* ... [Keep all previous CSS the same up until .abt-partners-section] ... */
+
+/* --- New Section: Partners (FULL COLOR & VISIBLE) --- */
+.abt-partners-section {
+  text-align: center;
+  padding: 5rem 0 2rem 0;
+  margin-top: 5rem;
+  border-top: 1px solid var(--abt-border);
+  background: linear-gradient(to bottom, transparent 0%, rgba(240, 253, 244, 0.5) 100%);
+}
+
+.abt-partners-label {
+  display: inline-block;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--abt-primary);
+  background: rgba(5, 150, 105, 0.08);
+  padding: 8px 16px;
+  border-radius: 50px;
+  margin-bottom: 3rem;
+  font-weight: 700;
+}
+
+/* Flex Layout */
+.abt-partners-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* The Individual Logo Card */
+.partner-card {
+  background: #ffffff;
+  width: 180px;
+  height: 90px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  
+  /* Default State: Clean White Card */
+  border: 1px solid var(--abt-border);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: default;
+}
+
+/* Hover Effect: Lift and Glow */
+.partner-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(13, 148, 136, 0.4);
+  box-shadow: 0 15px 30px -10px rgba(13, 148, 136, 0.15);
+}
+
+/* The Image Styling */
+.partner-logo-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  
+  /* --- CHANGED HERE: Full Color & High Visibility --- */
+  filter: none;      /* No grayscale */
+  opacity: 0.85;     /* Slight blend, but very dark/visible */
+  transition: all 0.3s ease;
+  
+  -webkit-backface-visibility: hidden; 
+  transform: translateZ(0);
+}
+
+/* On hover, go to 100% opacity and slight zoom */
+.partner-card:hover .partner-logo-img {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+  .abt-partners-grid {
+    gap: 1rem;
+  }
+
+  .partner-card {
+    width: 140px;
+    height: 80px;
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .abt-partners-grid {
+    gap: 0.75rem;
+  }
+  
+  .partner-card {
+    width: 46%;
+    height: 70px;
+  }
+  
+  .abt-partners-label {
+    margin-bottom: 2rem;
   }
 }

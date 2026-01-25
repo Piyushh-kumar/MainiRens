@@ -1,12 +1,37 @@
-import { Users, ShieldCheck, ArrowRight, Zap, Globe, Wind, Award } from 'lucide-react';
+import React from 'react';
+import { Users, ShieldCheck, Zap, Globe, Wind, Award } from 'lucide-react';
 import './About.css';
 
+// --- IMAGE IMPORTS ---
+import swatiImg from '../assets/swati.png';
+
+// Partner Logos (Exact names provided)
+import startupIndiaImg from '../assets/startup-india.png';
+import aicJkluImg from '../assets/AIC-JKLU.png';
+import hdfcImg from '../assets/HDFC-parivartan.png';
+import climateImg from '../assets/climate-collective.png';
+import nitiAyogImg from '../assets/Niti-Ayog.png';
+import ventureCentreImg from '../assets/Venture-Centre.png';
+import niotChennaiImg from '../assets/NIOT-chennai.png';
+
 export default function About() {
+
+  // --- PARTNER DATA CONFIGURATION ---
+  const partners = [
+    { name: "AIC-JKLU", logo: aicJkluImg },
+    { name: "Venture Center", logo: ventureCentreImg },
+    { name: "Climate Collective", logo: climateImg },
+    { name: "HDFC Parivartan", logo: hdfcImg },
+    { name: "NITI Aayog", logo: nitiAyogImg },
+    { name: "NIOT Chennai", logo: niotChennaiImg },
+    { name: "Startup India", logo: startupIndiaImg },
+  ];
+
   return (
     <section className="abt-section">
       <div className="abt-container">
 
-        {/* --- Top Section: Founder & Vision (Existing) --- */}
+        {/* --- Top Section: Founder & Vision --- */}
         <div className="abt-grid">
           {/* Left Content */}
           <div className="abt-text-col">
@@ -17,6 +42,18 @@ export default function About() {
             <h1>
               Built by <span className="abt-text-gradient">Industry Experts</span>
             </h1>
+
+            {/* --- Founder Profile Block --- */}
+            <div className="abt-founder-row">
+              <div className="abt-founder-img-wrapper">
+                <img src={swatiImg} alt="Swati Maini" className="abt-founder-img" />
+              </div>
+              <div className="abt-founder-info">
+                <span className="abt-founder-name">Swati Maini</span>
+                <span className="abt-founder-role">Founder & CEO</span>
+              </div>
+            </div>
+            {/* ---------------------------------- */}
             
             <p className="abt-description">
               Founded by Swati Maini, Maini Renewables brings together deep
@@ -61,15 +98,12 @@ export default function About() {
                   Supported by AIC-JKLU, Venture Center, and Climate Collective. 
                   Recipient of the Nidhi Prayas Grant and Seed Fund Scheme.
                 </p>
-                <button className="abt-action-btn">
-                  View Achievements <ArrowRight size={18} />
-                </button>
               </div>
             </div>
           </div>
         </div>
 
-        {/* --- Middle Section: What We Do (Extracted from Image) --- */}
+        {/* --- Middle Section: What We Do --- */}
         <div className="abt-mission-section">
           <div className="abt-mission-header">
             <h2>Clean. Safe. Renewable.</h2>
@@ -98,18 +132,20 @@ export default function About() {
           </div>
         </div>
 
-        {/* --- Bottom Section: Partners (Extracted from Image) --- */}
+        {/* --- Bottom Section: Partners --- */}
         <div className="abt-partners-section">
           <span className="abt-partners-label">Supported By & Knowledge Partners</span>
+          
           <div className="abt-partners-grid">
-             {/* Text placeholders for logos based on your image */}
-             <div className="partner-logo">AIC-JKLU</div>
-             <div className="partner-logo">Venture Center</div>
-             <div className="partner-logo">Climate Collective</div>
-             <div className="partner-logo">HDFC Parivartan</div>
-             <div className="partner-logo">NITI Aayog</div>
-             <div className="partner-logo">NIOT Chennai</div>
-             <div className="partner-logo">Startup India</div>
+             {partners.map((partner, index) => (
+               <div key={index} className="partner-card" title={partner.name}>
+                 <img 
+                   src={partner.logo} 
+                   alt={`${partner.name} logo`} 
+                   className="partner-logo-img" 
+                 />
+               </div>
+             ))}
           </div>
         </div>
 
