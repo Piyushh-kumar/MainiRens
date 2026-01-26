@@ -79,9 +79,16 @@ export default function Home() {
           </p>
 
           <div className="hero-buttons">
-            <a href="/technology" className="btn primary">
-              Discover Technology
+            {/* UPDATED LINK HERE */}
+            <a 
+              href="https://docs.google.com/forms/d/e/1FAIpQLSfWIwVPSPvXawdhJYNbLKU-mVYw4E30azxgbCWYP_S2qAXPtw/viewform" 
+              target="_blank" 
+              rel="noreferrer"
+              className="btn primary"
+            >
+              Sign Up for Early Access
             </a>
+            
             <a href="/contact" className="btn secondary">
               Contact Us
             </a>
@@ -90,7 +97,7 @@ export default function Home() {
       </section>
 
       {/* =====================================================
-          STATS STRIP
+          STAT STRIP
       ====================================================== */}
       <section className="stats container">
         <div className="stat-item">
@@ -112,7 +119,7 @@ export default function Home() {
       </section>
 
       {/* =====================================================
-          PARTNERS / TRUST (UPDATED DESIGN)
+          PARTNERS / TRUST
       ====================================================== */}
       <section className="partners-section">
         <div className="container">
@@ -133,7 +140,7 @@ export default function Home() {
       </section>
 
       {/* =====================================================
-          NEW SERVICES SECTION (Added Wind & Water)
+          SERVICES SECTION
       ====================================================== */}
       <section className="services-section container">
         <div className="section-header">
