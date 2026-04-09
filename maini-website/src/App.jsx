@@ -1,7 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import ScrollToTop from './components/ScrollToTop'; // <--- 1. Import this
+import ScrollToTop from './components/ScrollToTop';
+import ChatWidget from './components/ChatWidget'; // <--- NEW
 
 import Home from './pages/Home';
 import Technology from './pages/Technology';
@@ -14,8 +15,9 @@ import './App.css';
 export default function App() {
   return (
     <Router>
-      <ScrollToTop /> {/* <--- 2. Add this right here at the top */}
+      <ScrollToTop />
       <Navbar />
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/technology" element={<Technology />} />
@@ -23,7 +25,9 @@ export default function App() {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
+
       <Footer />
+      <ChatWidget /> {/* <--- NEW: renders on every page */}
     </Router>
   );
 }
