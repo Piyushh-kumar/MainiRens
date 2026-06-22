@@ -1,3 +1,12 @@
+:root {
+  /* Ultra-Dark Background Palette System */
+  --slate-950: #111614; /* Pure obsidian canvas */
+  --slate-900: #0B0F19; /* Secondary deep structural layout backdrop */
+  --slate-800: #111827; /* Surface canvas level 3 (Cards, Banners) */
+  --slate-300: #9CA3AF; /* Highly legible charcoal silver text */
+  --slate-50:  #F9FAFB; /* Maximum contrast heading emphasis text */
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -6,13 +15,15 @@
 
 body {
   font-family: 'Inter', system-ui, sans-serif;
-  background-color: #f8fafc;
-  color: #1e293b;
+  background-color: var(--slate-950); /* Transformed to rich obsidian */
+  color: var(--slate-300); /* Transformed to highly readable silver-gray */
+  -webkit-font-smoothing: antialiased;
 }
 
 a {
   text-decoration: none;
   color: inherit;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .container {

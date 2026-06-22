@@ -54,7 +54,6 @@ export default function ChatWidget() {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          // SECURE: This line now pulls the key from your private .env file
           'Authorization': `Bearer ${import.meta.env.VITE_GROQ_API_KEY}`, 
         },
         body: JSON.stringify({

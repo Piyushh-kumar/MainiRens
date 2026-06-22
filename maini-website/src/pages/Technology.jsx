@@ -1,197 +1,236 @@
 import React, { useState } from 'react';
-import './Technology.css';
+import { Link } from 'react-router-dom';
 import { 
   Droplets, 
   Leaf, 
   Zap, 
   Globe, 
   Wind, 
-  CheckCircle2, 
   ArrowRight,
   Waves,
   X 
 } from 'lucide-react';
+import './Technology.css';
 
-export default function Technology() {
+// Asset Imports
+import canalImage from "../assets/River.png";
+import rooftopImage from "../assets/rooftop.png";
+import windfarmImage from "../assets/windfarm.png";
+
+export default function SolutionsTech() {
   const [showSpecs, setShowSpecs] = useState(false);
 
-  const features = [
+  const keyPrinciples = [
     {
-      icon: <Droplets size={28} />,
-      title: 'Zero Dams',
-      highlight: 'Natural Flow',
-      desc: 'Preserves the natural course of water. No reservoirs or massive concrete infrastructure required.'
+      icon: <Droplets size={22} />,
+      title: 'Zero Dams Framework',
+      highlight: 'Natural Flow Preservation',
+      desc: 'Maintains the unaltered trajectory of water channels. Eliminates the operational need for synthetic reservoirs, blockades, or invasive concrete installations.'
     },
     {
-      icon: <Leaf size={28} />,
-      title: 'Aquatic Safe',
-      highlight: '100% Eco-Friendly',
-      desc: 'Fish-friendly turbine geometry ensures absolute safety for local aquatic ecosystems and biodiversity.'
+      icon: <Leaf size={22} />,
+      title: 'Aquatic Safe Geometry',
+      highlight: '100% Eco-Compatible',
+      desc: 'Fish-friendly hydrokinetic turbine spacing eliminates pressure differentials, ensuring uncompromised safety for local biodiversity and riverine pathways.'
     },
     {
-      icon: <Zap size={28} />,
-      title: 'High Efficiency',
-      highlight: 'Baseload Power',
-      desc: 'Vertical-axis torque optimized for low-velocity water streams to generate consistent energy.'
+      icon: <Zap size={22} />,
+      title: 'High Performance Baselines',
+      highlight: 'Continuous Baseload Output',
+      desc: 'Vertical-axis mechanical torque configuration is specialized to isolate kinetic power from slow-moving, low-velocity fluid conditions cleanly.'
     },
     {
-      icon: <Globe size={28} />,
-      title: 'Modular Fit',
-      highlight: 'Plug & Play',
-      desc: 'Adaptable design that fits seamlessly into canals, rivers, industrial outflows, and weirs.'
+      icon: <Globe size={22} />,
+      title: 'Modular Engineering Matrix',
+      highlight: 'Scalable Micro-Grids',
+      desc: 'An adaptive structural blueprint engineered to deploy directly into standard agricultural canals, active river streams, and municipal outflows.'
     }
   ];
 
-  const turbines = [
+  const turbineModels = [
     {
-      icon: <Waves size={32} />,
-      title: 'Finned Turbine',
-      stats: '29.7% Efficiency', 
-      desc: 'Drag-based design optimized for controlled flow environments like irrigation canals. Maximizes surface area contact.'
+      icon: <Waves size={26} />,
+      title: 'Finned Hydrokinetic Module',
+      efficiency: '29.7% Dynamic Efficiency',
+      desc: 'Drag-dependent optimization specialized for controlled environments like concrete irrigation flumes. Maximizes immediate kinetic surface contact vectors.'
     },
     {
-      icon: <Zap size={32} />,
-      title: 'Helical Turbine',
-      stats: '27% Efficiency',
-      desc: 'Spiral geometry ensures reduced vibration and continuous torque generation across variable flow speeds.'
+      icon: <Zap size={26} />,
+      title: 'Helical Continuous Torque',
+      efficiency: '27.0% Dynamic Efficiency',
+      desc: 'Spiral rotor geometry minimizes cyclical hydrodynamic vibration, delivering a unified output baseline across turbulent, variable-velocity flow streams.'
     },
     {
-      icon: <Wind size={32} />,
-      title: 'Darrieus Turbine',
-      stats: '20% Efficiency',
-      desc: 'Lift-based turbine engineered for higher-velocity wind and hydrokinetic installations with minimal drag.'
+      icon: <Wind size={26} />,
+      title: 'Darrieus Lift Configuration',
+      efficiency: '20.0% Dynamic Efficiency',
+      desc: 'Lift-driven engineering framework tailored for accelerated water channels and industrial aerodynamic applications operating with low systemic drag.'
     }
   ];
 
   return (
-    <section className="tex-section">
-      {/* Decorative Background Blob */}
-      <div className="tex-bg-blob"></div>
-
-      <div className="tex-container">
-        
-        {/* Header */}
-        <div className="tex-header">
-          <div className="tex-label-pill">
-            <span className="tex-dot"></span> Sustainable Hydro
+    <main className="soltech-page">
+      
+      {/* ================= EDITORIAL HERO SECTION ================= */}
+      <header className="soltech-hero">
+        <div className="soltech-hero-container">
+          <div className="soltech-pill">
+            <span className="soltech-pill-indicator"></span> Industrial Clean Energy Infrastructure
           </div>
           <h1>
-            Engineering <span className="tex-text-gradient">Nature's Flow</span>
+            Engineering Sustainable Solutions <br />
+            <span>Through Nature's Unbroken Kinetic Flow</span>
           </h1>
           <p>
-            The Damless® turbine combines proprietary hydro-mechanics with ecological preservation. 
-            A robust solution designed for the future of decentralized energy.
+            Maini Renewables develops advanced damless hydrokinetic matrices and modular wind-capture 
+            turbines. We generate zero-emission, decentralized power cleanly from naturally existing 
+            currents without destabilizing surrounding ecological systems.
           </p>
         </div>
+      </header>
 
-        {/* Feature Cards */}
-        <div className="tex-feature-grid">
-          {features.map((item, i) => (
-            <div key={i} className="tex-card">
-              <div className="tex-card-header">
-                <div className="tex-icon-circle">{item.icon}</div>
-                <span className="tex-card-highlight">{item.highlight}</span>
-              </div>
-              <h3>{item.title}</h3>
-              <p>{item.desc}</p>
-            </div>
-          ))}
+      {/* ================= CORE ARCHITECTURAL APPLICATION ROWS ================= */}
+      <section className="editorial-matrix">
+        <div className="matrix-section-title">
+          <span className="matrix-tag">Structural Deployments</span>
+          <h2>Flagship Installations</h2>
+          <p>Industrial scale solutions tailored to active infrastructure networks and natural water basins.</p>
         </div>
 
-        {/* Deployment / Visual Section */}
-        <div className="tex-deployment-wrapper">
-          <div className="tex-deployment-content">
-            <div className="tex-section-tag">
-              <Wind size={18} /> <span>Versatile Integration</span>
-            </div>
-            <h2>Deploy Anywhere</h2>
+        {/* Row 1: Canal */}
+        <div className="matrix-row">
+          <div className="matrix-meta">
+            <span className="row-number">01</span>
+            <h3>Canal Installation</h3>
+            <p>Capturing unutilized velocity profiles in man-made, managed municipal or industrial infrastructure lines.</p>
+            <Link to="/canal-installation" className="editorial-link">
+              Examine Specifications <ArrowRight size={16} />
+            </Link>
+          </div>
+          <div className="matrix-visual">
+            <img src={canalImage} alt="Canal Installation" />
+            <span className="visual-caption">Damless kinetic extraction units integrated with linear agricultural irrigation channels.</span>
+          </div>
+        </div>
+
+        {/* Row 2: Rooftop */}
+        <div className="matrix-row reverse">
+          <div className="matrix-meta">
+            <span className="row-number">02</span>
+            <h3>Rooftop & Micro-Wind Arrays</h3>
+            <p>Decentralized vertical-axis aerodynamic systems tailored to harvest micro-climatic wind tunnels directly over active industrial complexes.</p>
+            <Link to="/rooftop-installation" className="editorial-link">
+              Examine Specifications <ArrowRight size={16} />
+            </Link>
+          </div>
+          <div className="matrix-visual">
+            <img src={rooftopImage} alt="Rooftop Installation" />
+            <span className="visual-caption">High-torque aerodynamic units generating localized power lines at the point of consumption.</span>
+          </div>
+        </div>
+
+        {/* Row 3: Windfarm */}
+        <div className="matrix-row">
+          <div className="matrix-meta">
+            <span className="row-number">03</span>
+            <h3>Windfarm Integration</h3>
+            <p>High-density regional layouts configured for maximum localized kinetic output and direct connection to industrial mainframes.</p>
+            <Link to="/windfarm-installation" className="editorial-link">
+              Examine Specifications <ArrowRight size={16} />
+            </Link>
+          </div>
+          <div className="matrix-visual">
+            <img src={windfarmImage} alt="Windfarm Installation" />
+            <span className="visual-caption">Utility-scale industrial arrays engineered to handle high variable shear stress factors seamlessly.</span>
+          </div>
+        </div>
+      </section>
+
+      {/* ================= SCIENTIFIC PRINCIPLES SECTION ================= */}
+      <section className="tech-principles">
+        <div className="principles-grid-wrapper">
+          
+          <div className="principles-sticky-sidebar">
+            <span className="matrix-tag">The Damless® Paradigm</span>
+            <h2>Core Technological Framework</h2>
             <p>
-              Our modular units adapt to diverse kinetic environments, functioning effectively 
-              in both hydraulic and aerodynamic applications.
+              By decoupling generation from spatial manipulation, our hydro-mechanic systems 
+              coexist natively with active habitats while tracking fluid dynamics consistently.
             </p>
-
-            <div className="tex-check-grid">
-              <div className="tex-check-item">
-                <CheckCircle2 className="tex-check-icon" /> <span>Irrigation Canals</span>
-              </div>
-              <div className="tex-check-item">
-                <CheckCircle2 className="tex-check-icon" /> <span>Riverine Systems</span>
-              </div>
-              <div className="tex-check-item">
-                <CheckCircle2 className="tex-check-icon" /> <span>Industrial Effluents</span>
-              </div>
-              <div className="tex-check-item">
-                <CheckCircle2 className="tex-check-icon" /> <span>Wind Hybrid Units</span>
-              </div>
-            </div>
-
-            <button 
-              className="tex-primary-btn"
-              onClick={() => setShowSpecs(true)}
-            >
-              View Technical Specs <ArrowRight size={18} />
+            <button className="specs-trigger-btn" onClick={() => setShowSpecs(true)}>
+              Examine System Efficiencies <ArrowRight size={18} />
             </button>
           </div>
 
-          {/* 3D-style Graphic */}
-          <div className="tex-visual-container">
-            <div className="tex-glass-panel">
-              <div className="tex-turbine-graphic">
-                <div className="tex-circle tex-c-outer"></div>
-                <div className="tex-circle tex-c-mid"></div>
-                <div className="tex-circle tex-c-core">
-                  <Zap size={32} fill="currentColor" />
+          <div className="principles-list">
+            {keyPrinciples.map((item, idx) => (
+              <div key={idx} className="principle-item">
+                <div className="principle-lead">
+                  <div className="principle-icon-wrapper">{item.icon}</div>
+                  <span className="principle-label">{item.highlight}</span>
                 </div>
-                <div className="tex-orbit-dot"></div>
+                <h3>{item.title}</h3>
+                <p>{item.desc}</p>
               </div>
-              <div className="tex-stat-floater">
-                <span className="tex-stat-num">98%</span>
-                <span className="tex-stat-label">Eco-Safety</span>
-              </div>
-            </div>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
+      {/* ================= EXPLORATION NAVIGATOR LINK ================= */}
+      <footer className="soltech-footer-cta">
+        <div className="cta-inner-layout">
+          <h2>Ready to audit your localized kinetic capacity?</h2>
+          <p>
+            Our infrastructure consultants provide clean power maps tailored directly to your facility, 
+            local topography, or open fluid distribution networks.
+          </p>
+          <div className="cta-action-row">
+            <Link to="/more-solutions" className="cta-button-primary">
+              Explore Supplementary Platforms
+            </Link>
+            <Link to="/contact" className="cta-button-text">
+              Consult with Technical Engineers &rarr;
+            </Link>
           </div>
         </div>
-      </div>
+      </footer>
 
-      {/* --- MODAL OVERLAY --- */}
+      {/* ================= INTERACTIVE TECHNICAL MODAL ================= */}
       {showSpecs && (
-        <div className="tex-modal-overlay" onClick={() => setShowSpecs(false)}>
-          <div className="tex-modal-container" onClick={(e) => e.stopPropagation()}>
+        <div className="specs-modal-overlay" onClick={() => setShowSpecs(false)}>
+          <div className="specs-modal-window" onClick={(e) => e.stopPropagation()}>
             
-            <div className="tex-modal-header">
-              <div className="tex-modal-title">
-                <h2>Core Turbine Models</h2>
+            <div className="specs-modal-header">
+              <div>
+                <span className="matrix-tag">Engineering Matrix</span>
+                <h2>Core Turbodynamic Profiles</h2>
               </div>
-              <button className="tex-close-btn" onClick={() => setShowSpecs(false)}>
-                <X size={24} />
+              <button className="specs-close-button" onClick={() => setShowSpecs(false)}>
+                <X size={22} />
               </button>
             </div>
 
-            <div className="tex-modal-body">
-              <div className="tex-turbine-grid">
-                {turbines.map((t, i) => (
-                  <div key={i} className="tex-turbine-card">
-                    <div className="tex-turbine-visual">
-                      <div className="tex-turbine-icon-box">
-                        {t.icon}
-                      </div>
-                      <div className="tex-efficiency-badge">
-                         <span className="eff-label">Peak Eff.</span>
-                         <span className="eff-val">{t.stats}</span>
-                      </div>
-                    </div>
-                    <div className="tex-turbine-info">
-                      <span className="tex-tag">Proprietary</span>
-                      <h3>{t.title}</h3>
-                      <p>{t.desc}</p>
-                    </div>
+            <div className="specs-modal-body">
+              {turbineModels.map((turbine, idx) => (
+                <div key={idx} className="spec-editorial-block">
+                  <div className="spec-block-lead">
+                    <div className="spec-icon-box">{turbine.icon}</div>
+                    <span className="spec-metric-tag">{turbine.efficiency}</span>
                   </div>
-                ))}
-              </div>
+                  <div className="spec-block-content">
+                    <h3>{turbine.title}</h3>
+                    <p>{turbine.desc}</p>
+                  </div>
+                </div>
+              ))}
             </div>
+
           </div>
         </div>
       )}
-    </section>
+
+    </main>
   );
 }

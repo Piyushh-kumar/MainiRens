@@ -1,112 +1,133 @@
-/* --- Variables (Scoped with cntc-) --- */
-:root {
-  --cntc-primary: #059669;       /* Emerald Green */
-  --cntc-primary-dark: #047857;  /* Darker Emerald */
-  --cntc-accent: #0d9488;        /* Teal */
-  --cntc-bg: #ffffff;            /* White Background */
-  --cntc-bg-soft: #f0fdf4;       /* Mint Tint */
-  --cntc-text-main: #111827;     /* Dark Gray */
-  --cntc-text-muted: #4b5563;    /* Slate Gray */
-  --cntc-border: #e5e7eb;
-  
-  /* Shadows */
-  --cntc-shadow: 0 10px 30px -5px rgba(5, 150, 105, 0.08);
-  --cntc-shadow-hover: 0 20px 40px -5px rgba(5, 150, 105, 0.15);
-}
-
+/* =========================================================
+   CORE LAYOUT STRUCTURE (Premium Dark Forest Canvas)
+========================================================= */
 .cntc-section {
-  background-color: var(--cntc-bg);
-  color: var(--cntc-text-main);
-  padding: 8rem 0;
-  font-family: 'Inter', sans-serif;
   position: relative;
+  padding: 140px 1.5rem 8rem; /* High offset clears fixed main website navigation header */
+  background-color: #111614;  /* Deep near-black forest background */
+  color: #ffffff;
   overflow: hidden;
 }
 
-/* Background Blob Decoration */
+.cntc-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+/* Background Glowing Ambient Accent */
 .cntc-bg-blob {
   position: absolute;
-  bottom: -10%;
-  left: -5%;
+  top: -5%;
+  right: -5%;
   width: 500px;
   height: 500px;
-  background: radial-gradient(circle, rgba(13, 148, 136, 0.08) 0%, rgba(255,255,255,0) 70%);
+  background: radial-gradient(circle, rgba(163, 230, 53, 0.08) 0%, rgba(17, 22, 20, 0) 70%);
+  border-radius: 50%;
   z-index: 0;
   pointer-events: none;
 }
 
-.cntc-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
+/* FIXED STABLE GRID MAPPING:
+   Allocates explicit horizontal structural bounds to prevent any element crushing.
+*/
+.cntc-upper-area {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 4.5rem;
+  align-items: start;
   position: relative;
   z-index: 1;
 }
 
-.cntc-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 5rem;
-  align-items: center;
-}
-
-/* --- Left Column --- */
-.cntc-info-col {
+.cntc-left-side {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  gap: 2.5rem;
 }
 
-.cntc-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--cntc-accent);
-  background: var(--cntc-bg-soft);
-  padding: 6px 14px;
-  border-radius: 50px;
-  width: fit-content;
+/* =========================================================
+   TYPOGRAPHY & CONTENT HEADINGS
+========================================================= */
+.cntc-section h2 {
+  color: #ffffff;
   margin-bottom: 1.5rem;
-  border: 1px solid rgba(5, 150, 105, 0.1);
-}
-
-.cntc-badge-dot {
-  width: 6px;
-  height: 6px;
-  background-color: var(--cntc-primary);
-  border-radius: 50%;
-  animation: cntc-pulse 2s infinite;
+  font-size: 1.8rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  letter-spacing: -0.02em;
 }
 
 .cntc-title {
-  font-size: 3.5rem;
-  line-height: 1.1;
+  font-size: clamp(2.4rem, 4vw, 3.2rem);
+  color: #ffffff;
   font-weight: 800;
-  margin-bottom: 1.5rem;
-  letter-spacing: -0.02em;
-  color: var(--cntc-text-main);
+  margin-bottom: 1.25rem;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
 }
 
 .cntc-text-gradient {
-  background: linear-gradient(135deg, var(--cntc-primary) 0%, var(--cntc-accent) 100%);
+  background: linear-gradient(90deg, #a3e635, #d9f99d); /* Dynamic brand active neon highlights */
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .cntc-desc {
-  color: var(--cntc-text-muted);
   font-size: 1.125rem;
-  line-height: 1.6;
-  margin-bottom: 2.5rem;
-  max-width: 480px;
+  color: #9ca3af; /* Clean premium gray prose tracking */
+  line-height: 1.65;
+  font-weight: 300;
 }
 
-/* List Styles */
+/* Context Badge */
+.cntc-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: rgba(163, 230, 53, 0.06);
+  color: #a3e635;
+  border: 1px solid rgba(163, 230, 53, 0.15);
+  padding: 6px 14px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  width: fit-content;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.cntc-badge-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #a3e635;
+  border-radius: 50%;
+}
+
+/* FIXED: High-visibility text gradient fade for the tagline text block */
+.cntc-tagline p {
+  font-size: clamp(3rem, 5vw, 4.5rem);
+  font-weight: 900;
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.15) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* =========================================================
+   CONTACT SPECIFIC DETAILED UTILITY LISTS
+========================================================= */
 .cntc-list {
   list-style: none;
   padding: 0;
+  margin: 0;
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
@@ -115,138 +136,249 @@
 .cntc-list-item {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1.25rem;
 }
 
 .cntc-icon-box {
-  width: 44px;
-  height: 44px;
-  background: var(--cntc-bg-soft);
-  color: var(--cntc-primary);
+  background-color: rgba(163, 230, 53, 0.08);
+  color: #a3e635;
+  padding: 12px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 12px;
-  transition: transform 0.2s ease;
+  border: 1px solid rgba(163, 230, 53, 0.15);
+  flex-shrink: 0;
 }
 
-.cntc-list-item:hover .cntc-icon-box {
-  transform: scale(1.1);
-  background: var(--cntc-primary);
-  color: #fff;
-}
-
-.cntc-text, .cntc-link {
+.cntc-text, .cntc-info-link {
+  color: #e5e7eb;
   font-size: 1.05rem;
-  color: var(--cntc-text-main);
-  font-weight: 500;
   text-decoration: none;
-  transition: color 0.2s;
+  transition: color 0.2s ease;
 }
 
-.cntc-link:hover {
-  color: var(--cntc-primary);
+.cntc-info-link:hover {
+  color: #a3e635;
+  text-decoration: underline;
 }
 
-/* --- Right Column (Card) --- */
-.cntc-card-col {
-  display: flex;
-  justify-content: center;
+/* =========================================================
+   FORM CONTAINER MASK & ELEMENT FIELDS
+========================================================= */
+.cntc-form-container {
+  background-color: #1c2421; /* Structural charcoal container layout card surface */
+  padding: 3rem;
+  border-radius: 20px;
+  box-shadow: 0px 25px 50px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  position: sticky;
+  top: 100px; /* Aligns neatly with sticky header tracking profile */
+  box-sizing: border-box;
 }
 
-.cntc-card {
-  background: #ffffff;
-  border: 1px solid var(--cntc-border);
-  padding: 3.5rem 3rem;
-  border-radius: 24px;
-  text-align: center;
-  box-shadow: var(--cntc-shadow);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  width: 100%;
+.cntc-form-container h2 {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+}
+
+.cntc-form-subtitle {
+  color: #9ca3af;
+  margin-bottom: 2rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.cntc-form-container form {
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
-.cntc-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--cntc-shadow-hover);
-  border-color: rgba(5, 150, 105, 0.2);
+.cntc-form-container form label {
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
-.cntc-card-icon {
-  width: 64px;
-  height: 64px;
-  background: linear-gradient(135deg, var(--cntc-primary-dark) 0%, var(--cntc-accent) 100%);
-  color: #fff;
-  border-radius: 50%;
+.cntc-form-container form input,
+.cntc-form-container form select,
+.cntc-form-container form .cntc-property-selected select {
+  padding: 14px;
+  margin-bottom: 1.5rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 1rem;
+  background-color: #111614; /* Deep locked input backdrop canvas */
+  color: #ffffff;
+  width: 100%;
+  box-sizing: border-box;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cntc-form-container form input:focus,
+.cntc-form-container form select:focus {
+  border-color: #a3e635;
+  outline: none;
+  background-color: #151b18;
+}
+
+.cntc-form-container form input::placeholder {
+  color: #4b5563;
+}
+
+/* Custom drop custom native select chevron profiling */
+.cntc-form-container form select {
+  height: 52px;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%23a3e635'%3E%3Cpath d='M7 10l5 5 5-5H7z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center; 
+  background-size: 14px; 
+  padding-right: 40px;
+}
+
+.cntc-property-selected {
   display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Submit Execution Control Actions */
+.cntc-form-container form button.cntc-submit-btn {
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  border: none;
+  background-color: #a3e635; 
+  color: #111614;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  margin-top: 0.5rem;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 1.5rem;
-  box-shadow: 0 8px 16px rgba(5, 150, 105, 0.25);
+  box-shadow: 0 8px 20px rgba(163, 230, 53, 0.15);
 }
 
-.cntc-card-title {
-  font-size: 1.75rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  color: var(--cntc-text-main);
+.cntc-form-container form button.cntc-submit-btn:hover {
+  background-color: #84cc16;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(163, 230, 53, 0.3);
 }
 
-.cntc-card-desc {
-  color: var(--cntc-text-muted);
-  margin-bottom: 2rem;
+/* =========================================================
+   CARDS MODULE & COMPONENT INTERACTIVE ACCORDIONS
+========================================================= */
+.cntc-info, .cntc-map {
+  background-color: #1c2421;
+  padding: 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.cntc-info h2 {
+  color: #a3e635;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding-bottom: 14px;
+}
+
+/* FAQ Accordion Lists Layout */
+.cntc-faqs {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.cntc-faq-question {
+  background-color: #1c2421;
+  padding: 1.25rem 1.5rem;
+  margin: 12px 0;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #ffffff;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.cntc-faq-question:hover {
+  background-color: #222c28;
+  border-color: rgba(163, 230, 53, 0.2);
+}
+
+.cntc-faq-answer {
+  display: none;
+  background-color: rgba(60, 138, 113, 0.08);
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  border: 1px solid rgba(60, 138, 113, 0.15);
+  color: #d1d5db;
   line-height: 1.6;
 }
 
-.cntc-button {
-  background: var(--cntc-text-main);
-  color: #ffffff;
-  padding: 14px 32px;
-  border-radius: 12px;
-  font-weight: 600;
-  font-size: 1rem;
-  border: none;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  text-decoration: none;
-  transition: all 0.3s ease;
+.cntc-faq-answer.cntc-show {
+  display: block;
+  animation: cntcFaqFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.cntc-button:hover {
-  background: var(--cntc-primary);
-  gap: 12px;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3);
+@keyframes cntcFaqFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* --- Animations --- */
-@keyframes cntc-pulse {
-  0% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.5); opacity: 0.5; }
-  100% { transform: scale(1); opacity: 1; }
+/* Intersection Observer Slide Transitions */
+.cntc-slide-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* --- Responsive --- */
-@media (max-width: 900px) {
-  .cntc-grid {
-    grid-template-columns: 1fr;
-    gap: 3rem;
+.cntc-slide-in.cntc-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================================================
+   RESPONSIVENESS LAYOUT MATRIX RULES
+========================================================= */
+@media (max-width: 1024px) {
+  .cntc-section {
+    padding: 120px 1.5rem 6rem;
   }
-  
-  .cntc-info-col {
-    align-items: center;
-    text-align: center;
+
+  .cntc-upper-area {
+    grid-template-columns: 1fr; /* Responsively collapses columns to stack cleanly on mobile tabs */
+    gap: 4rem;
   }
-  
-  .cntc-list {
-    align-items: center; /* Centers list items */
+
+  .cntc-form-container {
+    width: 100%;
+    padding: 2.5rem;
+    position: static; /* Disables desktop dynamic sidebar anchoring logic */
   }
-  
-  .cntc-title {
-    font-size: 2.5rem;
+}
+
+@media (max-width: 768px) {
+  .cntc-section {
+    padding-top: 100px;
+  }
+  .cntc-form-container {
+    padding: 2rem 1.25rem;
   }
 }

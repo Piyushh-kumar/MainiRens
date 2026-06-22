@@ -1,5 +1,5 @@
 /* =========================================================
-   NAVBAR STYLES (Desktop)
+   NAVBAR STYLES (Desktop Premium Dark Forest Edition)
 ========================================================= */
 
 .navbar {
@@ -7,23 +7,37 @@
   top: 0;
   width: 100%;
   z-index: 1000; /* Base level */
-  padding: 18px 0;
-  transition: all 0.3s ease;
+  padding: 22px 0;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   background: transparent;
-  color: white; 
+  color: #ffffff; 
 }
 
+/* Scrolled Dark Mode Lock:
+   Enforces a robust, near-opaque deep forest charcoal color mask 
+   to completely eliminate any flashing white frames.
+*/
 .navbar.scrolled {
-  background: rgba(255, 255, 255, 0.98);
-  backdrop-filter: blur(12px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-  padding: 12px 0;
+  background: #111614 !important; /* Forces dark mode color foundation */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+  padding: 14px 0;
 }
 
-/* IMPORTANT: When drawer is open, keep navbar transparent so it doesn't clash */
+/* Fallback handling for browsers with native backdrop filters enabled */
+@supports (backdrop-filter: blur(16px)) or (-webkit-backdrop-filter: blur(16px)) {
+  .navbar.scrolled {
+    background: rgba(17, 22, 20, 0.92) !important;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+}
+
+/* Smooth structural transition context when the mobile navigation curtain expands */
 .navbar.scrolled:has(+ .nav-backdrop.visible) {
-  background: transparent; 
+  background: transparent !important; 
   box-shadow: none;
+  border-bottom-color: transparent;
 }
 
 .nav-content {
@@ -36,41 +50,46 @@
 }
 
 /* LOGO HANDLING */
-.nav-logo img {
-  height: 40px;
-  transition: filter 0.3s ease;
-  filter: brightness(0) invert(1);
-  position: relative;
-  z-index: 1002; /* Above backdrop */
+.nav-logo {
+  display: flex;
+  align-items: center;
 }
 
-/* Logo becomes dark on white background */
-.navbar.scrolled .nav-logo img { filter: none; }
-
-/* Logo turns white again if menu is open (against the dark drawer) */
-.navbar .hamburger-btn.open ~ .nav-logo img, /* If structure allows */
-.mobile-drawer.open ~ .navbar .nav-logo img {
-  filter: brightness(0) invert(1) !important;
+.nav-logo img {
+  height: 40px;
+  width: auto;
+  transition: opacity 0.3s ease, filter 0.3s ease;
+  position: relative;
+  z-index: 1002;
+  filter: none !important; /* Preserves true corporate branding palette */
 }
 
 /* DESKTOP LINKS */
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: 36px;
 }
 
 .nav-links a {
+  font-size: 0.95rem;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.9);
+  color: #9ca3af; /* Editorial slate gray */
   text-decoration: none;
   position: relative;
   transition: color 0.3s ease;
 }
 
-.navbar.scrolled .nav-links a { color: #022c22; }
-.navbar.scrolled .nav-links a.active { color: #059669; font-weight: 600; }
+.nav-links a:hover {
+  color: #ffffff;
+}
 
+.nav-links a.active {
+  color: #a3e635; /* Premium brand electric lime */
+  font-weight: 600;
+}
+
+/* Underline Indicator Animation */
 .nav-links a::after {
   content: '';
   position: absolute;
@@ -78,34 +97,44 @@
   bottom: -6px;
   width: 100%;
   height: 2px;
-  background: #34d399; 
+  background: #a3e635; 
   transform: scaleX(0);
-  transition: transform 0.3s ease;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .nav-links a:hover::after,
-.nav-links a.active::after { transform: scaleX(1); }
-
-/* CTA BUTTON */
-.nav-cta {
-  margin-left: 20px;
-  padding: 10px 24px;
-  border-radius: 999px;
-  background: linear-gradient(135deg, #059669, #047857); 
-  color: white !important; 
-  font-weight: 600 !important;
-  box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3);
-  transition: transform 0.2s ease;
+.nav-links a.active::after { 
+  transform: scaleX(1); 
 }
-.nav-cta:hover { transform: translateY(-1px); }
-.nav-cta::after { display: none; }
+
+/* CTA BUTTON (Electric Lime Variant) */
+.nav-cta {
+  margin-left: 12px;
+  padding: 10px 24px;
+  border-radius: 12px;
+  background: #a3e635;
+  color: #111614 !important; /* Contrast text baseline */
+  font-weight: 700 !important;
+  box-shadow: 0 8px 20px rgba(163, 230, 53, 0.15);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.nav-cta:hover { 
+  background: #84cc16;
+  transform: translateY(-2px); 
+  box-shadow: 0 12px 24px rgba(163, 230, 53, 0.25);
+}
+
+.nav-cta::after { 
+  display: none !important; 
+}
 
 
 /* =========================================================
    SIDEBAR & HAMBURGER
 ========================================================= */
 
-/* 1. The Hamburger Button (Highest Z-Index) */
+/* Hamburger Button Structural Box */
 .hamburger-btn {
   display: none; 
   background: none;
@@ -115,40 +144,42 @@
   height: 40px;
   padding: 0;
   position: relative;
-  z-index: 2000; /* Stays ON TOP of the drawer */
+  z-index: 2000;
 }
 
 .hamburger-btn span {
   display: block;
-  width: 26px;
+  width: 24px;
   height: 2px;
   background-color: #ffffff; 
-  margin: 5px auto;
-  border-radius: 2px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  margin: 6px auto;
+  border-radius: 4px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Logic: If Navbar is scrolled (white), bars are dark. */
-.hamburger-btn.dark-mode span { background-color: #022c22; }
-/* Logic: If Drawer is OPEN, bars must be white (to be visible on drawer). */
-.hamburger-btn.open span { background-color: #ffffff !important; }
+/* Dynamic configuration filters applied by JSX are normalized to high visibility crisp white */
+.hamburger-btn.dark-mode span,
+.hamburger-btn.open span { 
+  background-color: #ffffff !important; 
+}
 
-/* Animation */
-.hamburger-btn.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+/* Hamburger Bars Transformation Path */
+.hamburger-btn.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
 .hamburger-btn.open span:nth-child(2) { opacity: 0; transform: translateX(-10px); }
-.hamburger-btn.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.hamburger-btn.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
 
-/* 2. The Backdrop (Darkens the page) */
+/* Viewport Dimming Backdrop Screen Mask */
 .nav-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.6); /* Dimmed background */
-  backdrop-filter: blur(2px);
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.3s ease;
-  z-index: 1001; /* Above Navbar content, below Drawer */
+  transition: opacity 0.4s ease;
+  z-index: 1001;
 }
 
 .nav-backdrop.visible {
@@ -157,25 +188,24 @@
 }
 
 
-/* 3. The Sidebar Drawer */
+/* Mobile Drawer Flyout Sidebar Panel */
 .mobile-drawer {
   position: fixed;
   top: 0;
   right: 0;
-  width: 300px; /* Sidebar width */
+  width: 320px;
   height: 100vh;
-  background: linear-gradient(160deg, #064e3b 0%, #022c22 100%); /* Your Theme */
-  z-index: 1002; /* On top of backdrop */
+  background: #1c2421; /* Charcoal secondary surface container */
+  border-left: 1px solid rgba(255, 255, 255, 0.05);
+  z-index: 1002;
   
-  /* Slide Animation */
   transform: translateX(100%);
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: -5px 0 25px rgba(0,0,0,0.2);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: -10px 0 40px rgba(0, 0, 0, 0.6);
   
-  /* Layout */
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Center links vertically */
+  justify-content: center;
   padding: 40px;
 }
 
@@ -183,41 +213,49 @@
   transform: translateX(0);
 }
 
-/* Drawer Links */
+/* Drawer Links Typography Map */
 .drawer-content {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 28px;
 }
 
 .drawer-content a {
-  font-size: 1.3rem;
+  font-size: 1.25rem;
   font-weight: 600;
-  color: #ecfdf5;
+  color: #9ca3af;
   text-decoration: none;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
-  padding-bottom: 12px;
-  transition: color 0.3s, padding-left 0.3s;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  padding-bottom: 14px;
+  transition: all 0.3s ease;
 }
 
 .drawer-content a:hover,
 .drawer-content a.active {
-  color: #34d399;
-  padding-left: 10px; /* Slight slide effect on hover */
-  border-bottom-color: #34d399;
+  color: #a3e635;
+  padding-left: 8px; /* Offset spacing focus motion effect */
+  border-bottom-color: #a3e635;
 }
 
-/* Drawer CTA */
+/* Drawer CTA Focus Elements */
 .drawer-cta {
-  margin-top: 20px;
-  background: #34d399;
-  color: #064e3b !important;
+  margin-top: 16px;
+  background: #a3e635 !important;
+  color: #111614 !important;
   text-align: center;
-  padding: 12px !important;
-  border-radius: 8px;
+  padding: 14px !important;
+  border-radius: 12px;
+  font-weight: 700;
   border: none !important;
+  box-shadow: 0 8px 20px rgba(163, 230, 53, 0.15);
 }
 
+.drawer-cta:hover {
+  background: #84cc16 !important;
+  transform: translateY(-1px);
+}
+
+/* Device Media Query Threshold Cutoff */
 @media (max-width: 900px) {
   .nav-links { display: none; }
   .hamburger-btn { display: block; }

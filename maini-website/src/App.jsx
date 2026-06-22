@@ -9,7 +9,9 @@ import Technology from './pages/Technology';
 import Impact from './pages/Impact';
 import About from './pages/About';
 import Contact from './pages/Contact';
-
+// Match the exact lowercase name of your file:
+import PartnerRegistrationForm from './pages/PartnerRegistrationForm';
+import OurPartners from './pages/OurPartners' // <--- NEW: import the new page
 import './App.css';
 
 export default function App() {
@@ -24,6 +26,8 @@ export default function App() {
         <Route path="/impact" element={<Impact />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/PartnerRegistrationForm" element={<PartnerRegistrationForm />} /> 
+        <Route path="/our-partners" element={<OurPartners />} /> 
       </Routes>
 
       <Footer />

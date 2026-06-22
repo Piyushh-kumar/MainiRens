@@ -1,0 +1,412 @@
+/* =========================================================
+   PARTNERS PAGE CORE OVERALL WRAPPER LAYER
+========================================================= */
+.prtn-page-wrapper {
+  background-color: #111614; /* Locks absolute dark forest background */
+  color: #ffffff;
+  min-height: 100vh;
+  padding: 140px 1.5rem 6rem; /* Prevents alignment clashing under fixed main header */
+  position: relative;
+  overflow: hidden;
+}
+
+.prtn-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  transition: filter 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Blur filtering rule execution context when modal triggers click events */
+.prtn-blurred {
+  filter: blur(8px);
+  pointer-events: none;
+}
+
+/* =========================================================
+   HEADER SECTION LAYOUT BRAND COMPONENT
+========================================================= */
+.prtn-header {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 4rem;
+  align-items: end;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding-bottom: 3.5rem;
+  margin-bottom: 4rem;
+}
+
+.prtn-badge {
+  display: inline-flex;
+  align-items: center;
+  background-color: rgba(163, 230, 53, 0.06);
+  color: #a3e635; /* Electric brand Lime tracking text */
+  border: 1px solid rgba(163, 230, 53, 0.15);
+  padding: 6px 14px;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 1.5rem;
+}
+
+.prtn-left-section h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #9ca3af;
+  margin-bottom: 0.5rem;
+}
+
+.prtn-left-section h3 {
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 800;
+  line-height: 1.2;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+}
+
+.prtn-left-section h3 span {
+  background: linear-gradient(90deg, #a3e635, #d9f99d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.prtn-right-section p {
+  color: #9ca3af;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+/* =========================================================
+   SELECTION CARD INTERACTIVE ELEMENTS MATRIX GRID
+========================================================= */
+.prtn-bottom-section {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+
+.prtn-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.prtn-card {
+  background-color: #1c2421; /* Structural container dark charcoal surfaces */
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  padding: 2.5rem;
+  border-radius: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.prtn-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(163, 230, 53, 0.25);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+}
+
+.prtn-card h4 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.prtn-card:hover h4 {
+  color: #a3e635;
+}
+
+.prtn-card p {
+  font-size: 0.95rem;
+  color: #9ca3af;
+  font-weight: 300;
+}
+
+.prtn-arrow {
+  color: #9ca3af;
+  transform: translateX(0);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  flex-shrink: 0;
+  margin-left: 1rem;
+}
+
+.prtn-card:hover .prtn-arrow {
+  color: #a3e635;
+  transform: translateX(4px);
+}
+
+/* =========================================================
+   BOTTOM BANNER MARKETING REGISTRATION
+========================================================= */
+.prtn-network-banner {
+  background: linear-gradient(135deg, #1c2421 0%, #131a18 100%);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 3.5rem;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 3rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.prtn-banner-text h4 {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.01em;
+}
+
+.prtn-banner-text p {
+  color: #9ca3af;
+  font-size: 1.05rem;
+  font-weight: 300;
+}
+
+.prtn-become-partner-btn {
+  background-color: #a3e635;
+  color: #111614;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 1rem 2.25rem;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  box-shadow: 0 8px 24px rgba(163, 230, 53, 0.15);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.prtn-become-partner-btn:hover {
+  background-color: #84cc16;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(163, 230, 53, 0.3);
+}
+
+/* =========================================================
+   MODALS AND CATEGORY LOGO POPUP OVERLAYS
+========================================================= */
+.prtn-backdrop, .prtn-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.prtn-backdrop.prtn-show, .prtn-modal-backdrop {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Shared Modal Container Surface Box Profiles */
+.prtn-popup-options, .prtn-modal {
+  position: relative;
+  background-color: #1c2421;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  padding: 3.5rem;
+  width: 100%;
+  max-width: 900px;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.6);
+  transform: scale(0.95);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.prtn-backdrop.prtn-show .prtn-popup-options {
+  transform: scale(1);
+}
+
+/* Precise Upper Dismissal Anchors */
+.prtn-close-x {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  background: transparent;
+  border: none;
+  color: #9ca3af;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50px;
+  transition: all 0.2s ease;
+}
+
+.prtn-close-x:hover {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* FIXED: Grid parameters prevent compressed image layout bounds */
+.prtn-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+/* FIXED: Converted to responsive auto-height tracking to eliminate layout blowouts */
+.prtn-item {
+  background-color: #111614;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  border-radius: 14px;
+  padding: 1.25rem;
+  min-height: 120px;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
+}
+
+.prtn-item:hover {
+  transform: translateY(-4px);
+  border-color: rgba(163, 230, 53, 0.2);
+  background-color: #151c19;
+}
+
+/* FIXED: Maximum boundary locks constrain clipping or overflowing images */
+.prtn-image {
+  max-width: 100%;
+  max-height: 80px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* =========================================================
+   PARTNER REGISTRATION MODAL FORM FIELDS
+========================================================= */
+.prtn-modal {
+  max-width: 550px;
+  padding: 3rem;
+}
+
+.prtn-modal h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+.prtn-modal p {
+  color: #9ca3af;
+  font-size: 0.95rem;
+  margin-bottom: 2rem;
+  font-weight: 300;
+}
+
+.prtn-modal form {
+  display: flex;
+  flex-direction: column;
+}
+
+.prtn-modal form label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+  color: #ffffff;
+}
+
+.prtn-modal form input,
+.prtn-modal form textarea {
+  padding: 14px;
+  background-color: #111614;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  color: #ffffff;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  width: 100%;
+  box-sizing: border-box;
+  transition: all 0.25s ease;
+}
+
+.prtn-modal form input:focus,
+.prtn-modal form textarea:focus {
+  border-color: #a3e635;
+  outline: none;
+  background-color: #141b18;
+}
+
+.prtn-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.5rem;
+}
+
+.prtn-submit-btn {
+  background-color: #a3e635;
+  color: #111614;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(163, 230, 53, 0.15);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.prtn-submit-btn:hover {
+  background-color: #84cc16;
+  transform: translateY(-1px);
+}
+
+/* =========================================================
+   RESPONSIVENESS LAYOUT MATRIX RULES
+========================================================= */
+@media (max-width: 1024px) {
+  .prtn-page-wrapper {
+    padding-top: 120px;
+  }
+  .prtn-header {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .prtn-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .prtn-network-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 2.5rem;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .prtn-page-wrapper {
+    padding-top: 100px;
+  }
+  .prtn-popup-options, .prtn-modal {
+    padding: 2.5rem 1.5rem;
+  }
+}
