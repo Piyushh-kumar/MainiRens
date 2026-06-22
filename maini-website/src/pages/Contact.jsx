@@ -1,12 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Mail, Phone, MapPin, Globe, ArrowRight } from 'lucide-react';
+import { Mail, Phone, MapPin, Globe, ArrowRight, Building2, Droplet } from 'lucide-react';
 import { FaEnvelope, FaQuestionCircle } from "react-icons/fa";
 import "./Contact.css";
 
 export default function Contact() {
   const contentRef = useRef(null);
   const [activeQuestion, setActiveQuestion] = useState(null);
-  const [propertyType, setPropertyType] = useState('hydro');
+  const [formTab, setFormTab] = useState('partner'); // 'partner' or 'hydro'
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -27,6 +27,12 @@ export default function Contact() {
 
   const toggleQuestion = (index) => {
     setActiveQuestion(activeQuestion === index ? null : index);
+  };
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    // Handle submission logic here
+    alert(`${formTab === 'partner' ? 'Partner Registration' : 'Hydro Site Assessment'} submitted successfully!`);
   };
 
   return (
@@ -95,20 +101,6 @@ export default function Contact() {
               </ul>
             </div>
 
-            {/* Embedded Site Map */}
-            <div className="cntc-map cntc-slide-in">
-              <h2>Site Location</h2>
-              <iframe
-                title="Google Map"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8354345092553!2d144.95373631531638!3d-37.81627997975102!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11f4ab%3A0x5045675218ceed30!2sMelbourne%20Victoria%20Australia!5e0!3m2!1sen!2sus!4v1632447455770!5m2!1sen!2sus"
-                width="100%"
-                height="220"
-                style={{ border: 0, borderRadius: "6px" }}
-                allowFullScreen=""
-                loading="lazy"
-              ></iframe>
-            </div>
-
             {/* Interactive FAQs Section */}
             <div className="cntc-faqs cntc-slide-in">
               <h2>
@@ -150,72 +142,111 @@ export default function Contact() {
 
           </div>
 
-          {/* Right Side Column: Lead Form Card */}
+          {/* Right Side Column: Dynamic Lead Form Card */}
           <div className="cntc-form-container cntc-slide-in">
-            <h2>Contact Form</h2>
-            <p className="cntc-form-subtitle">
-              Whether you have a technical question or an investment proposal, our team is ready to connect.
-            </p>
             
-            <form onSubmit={(e) => e.preventDefault()}>
-              <label>Name:</label>
-              <input type="text" name="name" placeholder="Your Name" required />
-
-              <label>Contact:</label>
-              <input type="tel" name="contact" placeholder="Phone Number" required />
-
-              <label>Location:</label>
-              <input type="text" name="location" placeholder="Your City/State" required />
-
-              <label>Site Location:</label>
-              <input
-                type="text"
-                name="siteLocation"
-                placeholder="Google Map Pin Link"
-                required
-              />
-
-              <label>Type of Property</label>
-              <select name="property-name" required onChange={(e) => setPropertyType(e.target.value)}>
-                <option value="hydro">Hydro</option>
-                <option value="wind">Wind</option>
-              </select>
-
-              {propertyType === "hydro" && (
-                <div className="cntc-property-selected">
-                  <label>Type of Property - Hydro:</label>
-                  <select name="hydro-type" required>
-                    <option value="canal">Canal</option>
-                    <option value="river">River</option>
-                    <option value="existing-power-plant">Existing Power Plant</option>
-                    <option value="tidal">Tidal</option>
-                  </select>
-                </div>
-              )}
-
-              {propertyType === "wind" && (
-                <div className="cntc-property-selected">
-                  <label>Type of Property - Wind:</label>
-                  <select name="wind-type" required>
-                    <option value="rooftop">Rooftop</option>
-                    <option value="existing">Existing</option>
-                    <option value="wind-farm">Wind Farm</option>
-                    <option value="highway">Highway</option>
-                    <option value="open-farm">Open Farm</option>
-                  </select>
-                </div>
-              )}
-
-              <label>Are you an individual or company?</label>
-              <select name="individual-or-company" required>
-                <option value="individual">Individual</option>
-                <option value="company">Company</option>
-              </select>
-
-              <button type="submit" className="cntc-submit-btn">
-                Submit Proposal <ArrowRight size={18} style={{ marginLeft: '8px', verticalAlign: 'middle' }} />
+            {/* Form Toggle Tabs */}
+            <div className="cntc-form-tabs">
+              <button 
+                className={`cntc-tab-btn ${formTab === 'partner' ? 'active' : ''}`}
+                onClick={() => setFormTab('partner')}
+                type="button"
+              >
+                <Building2 size={16} /> Partner Registration
               </button>
-            </form>
+              <button 
+                className={`cntc-tab-btn ${formTab === 'hydro' ? 'active' : ''}`}
+                onClick={() => setFormTab('hydro')}
+                type="button"
+              >
+                <Droplet size={16} /> Hydro Site Assessment
+              </button>
+            </div>
+
+            {formTab === 'partner' ? (
+              <>
+                <h2>Partner Registration</h2>
+                <p className="cntc-form-subtitle">Register with us to connect with our engineering and deployment pipeline teams.</p>
+                
+                <form onSubmit={handleFormSubmit}>
+                  <label>Your Name *</label>
+                  <input type="text" name="partnerName" placeholder="Enter your full name" required />
+
+                  <label>Company Name *</label>
+                  <input type="text" name="companyName" placeholder="Enter your company's name" required />
+
+                  <label>Email *</label>
+                  <input type="email" name="partnerEmail" placeholder="Enter your email" required />
+
+                  <label>Phone *</label>
+                  <input type="tel" name="partnerPhone" placeholder="Enter your phone" required />
+
+                  <label>Contractor / RE Developer / EPC partner *</label>
+                  <select name="partnerType" required>
+                    <option value="">Add one</option>
+                    <option value="contractor">Contractor</option>
+                    <option value="developer">RE Developer</option>
+                    <option value="epc-partner">EPC Partner</option>
+                  </select>
+
+                  <label>Portfolio or Company Website link *</label>
+                  <textarea 
+                    name="portfolioLink" 
+                    rows="3" 
+                    placeholder="Add a link to your portfolio or website. If not available, add a brief introduction of your work nature." 
+                    required
+                  ></textarea>
+
+                  <label>What is your region of Operation? *</label>
+                  <input type="text" name="region" placeholder="Enter your location or region" required />
+
+                  <button type="submit" className="cntc-submit-btn">
+                    Submit Registration <ArrowRight size={18} style={{ marginLeft: '8px', verticalAlign: 'middle' }} />
+                  </button>
+                </form>
+              </>
+            ) : (
+              <>
+                <h2>Hydro Site Assessment</h2>
+                <p className="cntc-form-subtitle">Share your site details with us while we train our AI model.</p>
+                
+                <form onSubmit={handleFormSubmit}>
+                  <label>Your Name *</label>
+                  <input type="text" name="hydroName" placeholder="Enter your full name" required />
+
+                  <label>Company Name/ Private Land *</label>
+                  <input type="text" name="landName" placeholder="Enter your company's name" required />
+
+                  <label>Email *</label>
+                  <input type="email" name="hydroEmail" placeholder="Enter your email" required />
+
+                  <label>Phone *</label>
+                  <input type="tel" name="hydroPhone" placeholder="Enter your phone" required />
+
+                  <label>Where is your site located? https://www.google.com/maps *</label>
+                  <input type="text" name="googleMapsLink" placeholder="Paste your google map location here" required />
+
+                  <label>Tell us about the site ownership *</label>
+                  <select name="siteOwnership" required>
+                    <option value="">Add one</option>
+                    <option value="individual">Individual / Private Land</option>
+                    <option value="company">Company Owned</option>
+                    <option value="government">Government / Lease</option>
+                  </select>
+
+                  <label>Share any additional details about the site</label>
+                  <textarea 
+                    name="additionalDetails" 
+                    rows="3" 
+                    placeholder="Flow rate history, channel type, or extra notes..."
+                  ></textarea>
+
+                  <button type="submit" className="cntc-submit-btn">
+                    Submit Assessment <ArrowRight size={18} style={{ marginLeft: '8px', verticalAlign: 'middle' }} />
+                  </button>
+                </form>
+              </>
+            )}
           </div>
 
         </div>

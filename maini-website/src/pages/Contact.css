@@ -3,8 +3,8 @@
 ========================================================= */
 .cntc-section {
   position: relative;
-  padding: 140px 1.5rem 8rem; /* High offset clears fixed main website navigation header */
-  background-color: #111614;  /* Deep near-black forest background */
+  padding: 140px 1.5rem 8rem; 
+  background-color: #111614;  
   color: #ffffff;
   overflow: hidden;
 }
@@ -18,7 +18,6 @@
   gap: 3rem;
 }
 
-/* Background Glowing Ambient Accent */
 .cntc-bg-blob {
   position: absolute;
   top: -5%;
@@ -31,9 +30,6 @@
   pointer-events: none;
 }
 
-/* FIXED STABLE GRID MAPPING:
-   Allocates explicit horizontal structural bounds to prevent any element crushing.
-*/
 .cntc-upper-area {
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
@@ -73,19 +69,18 @@
 }
 
 .cntc-text-gradient {
-  background: linear-gradient(90deg, #a3e635, #d9f99d); /* Dynamic brand active neon highlights */
+  background: linear-gradient(90deg, #a3e635, #d9f99d); 
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .cntc-desc {
   font-size: 1.125rem;
-  color: #9ca3af; /* Clean premium gray prose tracking */
+  color: #9ca3af; 
   line-height: 1.65;
   font-weight: 300;
 }
 
-/* Context Badge */
 .cntc-badge {
   display: inline-flex;
   align-items: center;
@@ -109,7 +104,6 @@
   border-radius: 50%;
 }
 
-/* FIXED: High-visibility text gradient fade for the tagline text block */
 .cntc-tagline p {
   font-size: clamp(3rem, 5vw, 4.5rem);
   font-weight: 900;
@@ -122,7 +116,7 @@
 }
 
 /* =========================================================
-   CONTACT SPECIFIC DETAILED UTILITY LISTS
+   CONTACT DETAILS UTILITY LIST
 ========================================================= */
 .cntc-list {
   list-style: none;
@@ -164,16 +158,57 @@
 }
 
 /* =========================================================
+   TAB SWITCHING SELECTION HEADER
+========================================================= */
+.cntc-form-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  background-color: #111614;
+  padding: 6px;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.cntc-tab-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 10px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  background: transparent;
+  color: #9ca3af;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cntc-tab-btn:hover {
+  color: #ffffff;
+}
+
+.cntc-tab-btn.active {
+  background-color: #1c2421;
+  color: #a3e635;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(163, 230, 53, 0.15);
+}
+
+/* =========================================================
    FORM CONTAINER MASK & ELEMENT FIELDS
 ========================================================= */
 .cntc-form-container {
-  background-color: #1c2421; /* Structural charcoal container layout card surface */
+  background-color: #1c2421; 
   padding: 3rem;
   border-radius: 20px;
   box-shadow: 0px 25px 50px rgba(0, 0, 0, 0.3);
   border: 1px solid rgba(255, 255, 255, 0.04);
   position: sticky;
-  top: 100px; /* Aligns neatly with sticky header tracking profile */
+  top: 100px; 
   box-sizing: border-box;
 }
 
@@ -189,6 +224,7 @@
   margin-bottom: 2rem;
   font-size: 0.95rem;
   line-height: 1.5;
+  font-weight: 300;
 }
 
 .cntc-form-container form {
@@ -197,7 +233,7 @@
 }
 
 .cntc-form-container form label {
-  margin-bottom: 6px;
+  margin-bottom: 8px;
   font-weight: 600;
   color: #ffffff;
   font-size: 0.8rem;
@@ -207,31 +243,34 @@
 
 .cntc-form-container form input,
 .cntc-form-container form select,
-.cntc-form-container form .cntc-property-selected select {
+.cntc-form-container form textarea {
   padding: 14px;
   margin-bottom: 1.5rem;
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.08);
   font-size: 1rem;
-  background-color: #111614; /* Deep locked input backdrop canvas */
+  background-color: #111614; 
   color: #ffffff;
   width: 100%;
   box-sizing: border-box;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  font-family: inherit;
 }
 
 .cntc-form-container form input:focus,
-.cntc-form-container form select:focus {
+.cntc-form-container form select:focus,
+.cntc-form-container form textarea:focus {
   border-color: #a3e635;
   outline: none;
   background-color: #151b18;
 }
 
-.cntc-form-container form input::placeholder {
+.cntc-form-container form input::placeholder,
+.cntc-form-container form textarea::placeholder {
   color: #4b5563;
 }
 
-/* Custom drop custom native select chevron profiling */
+/* Custom dropdown chevron mapping profile */
 .cntc-form-container form select {
   height: 52px;
   appearance: none;
@@ -243,13 +282,7 @@
   padding-right: 40px;
 }
 
-.cntc-property-selected {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-
-/* Submit Execution Control Actions */
+/* Submit Execution Button Actions */
 .cntc-form-container form button.cntc-submit-btn {
   padding: 1rem 2rem;
   border-radius: 12px;
@@ -274,9 +307,9 @@
 }
 
 /* =========================================================
-   CARDS MODULE & COMPONENT INTERACTIVE ACCORDIONS
+   INFO MODULE BOX & ACCORDIONS
 ========================================================= */
-.cntc-info, .cntc-map {
+.cntc-info {
   background-color: #1c2421;
   padding: 2.5rem;
   border-radius: 20px;
@@ -292,7 +325,6 @@
   padding-bottom: 14px;
 }
 
-/* FAQ Accordion Lists Layout */
 .cntc-faqs {
   width: 100%;
   margin-top: 1rem;
@@ -342,7 +374,7 @@
   }
 }
 
-/* Intersection Observer Slide Transitions */
+/* Slide Transitions via Intersection Observer */
 .cntc-slide-in {
   opacity: 0;
   transform: translateY(30px);
@@ -363,14 +395,14 @@
   }
 
   .cntc-upper-area {
-    grid-template-columns: 1fr; /* Responsively collapses columns to stack cleanly on mobile tabs */
+    grid-template-columns: 1fr; 
     gap: 4rem;
   }
 
   .cntc-form-container {
     width: 100%;
     padding: 2.5rem;
-    position: static; /* Disables desktop dynamic sidebar anchoring logic */
+    position: static; 
   }
 }
 
@@ -380,5 +412,8 @@
   }
   .cntc-form-container {
     padding: 2rem 1.25rem;
+  }
+  .cntc-form-tabs {
+    grid-template-columns: 1fr;
   }
 }
