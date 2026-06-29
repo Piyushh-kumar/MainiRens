@@ -1,0 +1,330 @@
+.site-assess-section {
+  position: relative;
+  padding: 140px 1.5rem 8rem;
+  background-color: #111614;
+  color: #ffffff;
+  overflow: hidden;
+}
+
+.site-assess-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.site-bg-blob {
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(163, 230, 53, 0.06) 0%, rgba(17, 22, 20, 0) 75%);
+  border-radius: 50%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.site-upper-area {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: start;
+  position: relative;
+  z-index: 1;
+}
+
+.site-left-side {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.site-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: rgba(163, 230, 53, 0.06);
+  color: #a3e635;
+  border: 1px solid rgba(163, 230, 53, 0.15);
+  padding: 6px 14px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  width: fit-content;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.site-badge-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #a3e635;
+  border-radius: 50%;
+}
+
+.site-title {
+  font-size: clamp(2.5rem, 4.5vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+
+.site-text-gradient {
+  background: linear-gradient(90deg, #a3e635, #d9f99d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.site-desc {
+  font-size: 1.15rem;
+  color: #9ca3af;
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+.site-guidelines {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 2rem;
+}
+
+.site-guidelines h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.guideline-card {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+
+.guideline-icon {
+  color: #a3e635;
+  background: rgba(163, 230, 53, 0.05);
+  padding: 10px;
+  width: 42px;
+  height: 42px;
+  border-radius: 8px;
+  border: 1px solid rgba(163, 230, 53, 0.1);
+  flex-shrink: 0;
+}
+
+.guideline-card strong {
+  display: block;
+  font-size: 1.05rem;
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+
+.guideline-card span {
+  color: #9ca3af;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  font-weight: 300;
+}
+
+/* Form Styling */
+.site-form-container {
+  background-color: #1c2421;
+  padding: 3rem;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  box-shadow: 0px 25px 50px rgba(0, 0, 0, 0.3);
+}
+
+.site-form-container h2 {
+  font-size: 1.75rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+.site-form-subtitle {
+  color: #9ca3af;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 2rem;
+  font-weight: 300;
+}
+
+.site-form-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  background-color: #111614;
+  padding: 6px;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.site-tab-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 10px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  background: transparent;
+  color: #9ca3af;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.site-tab-btn.active {
+  background-color: #1c2421;
+  color: #a3e635;
+  border: 1px solid rgba(163, 230, 53, 0.15);
+}
+
+.site-form-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.site-form-container form label {
+  margin-bottom: 8px;
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.site-form-container form input,
+.site-form-container form select,
+.site-form-container form textarea {
+  padding: 14px;
+  margin-bottom: 1.5rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 1rem;
+  background-color: #111614;
+  color: #ffffff;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: inherit;
+  transition: all 0.3s ease;
+}
+
+.site-form-container form input:focus,
+.site-form-container form select:focus,
+.site-form-container form textarea:focus {
+  border-color: #a3e635;
+  outline: none;
+}
+
+.site-form-container form select {
+  height: 52px;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%23a3e635'%3E%3Cpath d='M7 10l5 5 5-5H7z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 14px;
+}
+
+.site-submit-btn {
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  border: none;
+  background-color: #a3e635;
+  color: #111614;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 20px rgba(163, 230, 53, 0.15);
+  transition: all 0.3s ease;
+  margin-top: 0.5rem;
+}
+
+.site-submit-btn:hover {
+  background-color: #84cc16;
+  transform: translateY(-2px);
+}
+
+.site-slide-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.site-slide-in.site-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 1024px) {
+  .site-upper-area {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+}
+@media (max-width: 768px) {
+  .site-form-tabs {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
+
+/* Add this to control the input row layout matching your card style */
+.site-location-input-row {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 0px; /* Overrides double spacing issue */
+}
+
+.site-location-input-row input {
+  flex: 1;
+  margin-bottom: 1.5rem !important;
+}
+
+.site-geo-btn {
+  height: 51px; /* Perfectly aligns with your standard input text fields height */
+  padding: 0 1.25rem;
+  border: 1px solid rgba(163, 230, 53, 0.3);
+  background-color: rgba(163, 230, 53, 0.05);
+  color: #a3e635;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.site-geo-btn:hover:not(:disabled) {
+  background-color: #a3e635;
+  color: #111614;
+}
+
+.site-geo-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Portable adjustments for tiny smartphone viewports */
+@media (max-width: 480px) {
+  .site-location-input-row {
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .site-location-input-row input {
+    margin-bottom: 0px !important;
+  }
+  .site-geo-btn {
+    width: 100%;
+    height: 48px;
+  }
+}

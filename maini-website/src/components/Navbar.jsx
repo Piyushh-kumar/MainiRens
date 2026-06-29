@@ -45,6 +45,7 @@ export default function Navbar() {
             <NavLink to="/impact">Impact</NavLink>
             <NavLink to="/about">About</NavLink>
             <NavLink to="/our-partners">Our Partners</NavLink>
+            <NavLink to="/site-assessment">Site Assessment</NavLink> {/* <--- ADDED */}
             <Link to="/contact" className="nav-cta">Partner With Us</Link>
           </div>
 
@@ -75,6 +76,7 @@ export default function Navbar() {
           <NavLink to="/impact">Impact</NavLink>
           <NavLink to="/about">About</NavLink>
           <NavLink to="/our-partners">Our Partners</NavLink>
+          <NavLink to="/site-assessment">Site Assessment</NavLink> {/* <--- ADDED */}
           <Link to="/contact" className="drawer-cta">Partner With Us</Link>
         </div>
       </div>

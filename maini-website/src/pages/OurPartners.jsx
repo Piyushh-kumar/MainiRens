@@ -1,10 +1,9 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { ArrowRight, X } from "lucide-react";
 import "./OurPartners.css";
 
 const PartnersPage = () => {
   const [showOptions, setShowOptions] = useState(false);
-  const [showPartnerForm, setShowPartnerForm] = useState(false);
   const [partners, setPartners] = useState([]);
 
   const partnersData = {
@@ -79,24 +78,19 @@ const PartnersPage = () => {
     }
   };
 
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
-    setShowPartnerForm(false);
-  };
-
   // Lock scrolling behind active modal windows
   useEffect(() => {
-    if (showOptions || showPartnerForm) {
+    if (showOptions) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "unset";
     }
     return () => { document.body.style.overflow = "unset"; };
-  }, [showOptions, showPartnerForm]);
+  }, [showOptions]);
 
   return (
     <div className="prtn-page-wrapper">
-      <div className={`prtn-container ${showOptions || showPartnerForm ? "prtn-blurred" : ""}`}>
+      <div className={`prtn-container ${showOptions ? "prtn-blurred" : ""}`}>
         
         {/* Header Block Section */}
         <div className="prtn-header">
@@ -139,20 +133,6 @@ const PartnersPage = () => {
               <ArrowRight size={20} className="prtn-arrow" />
             </div>
           </div>
-
-          {/* Invitation Section banner block */}
-          <div className="prtn-network-banner">
-            <div className="prtn-banner-text">
-              <h4>Ready to make an impact?</h4>
-              <p>Join the Maini Renewables partner network and scale damless clean energy.</p>
-            </div>
-            <button
-              className="prtn-become-partner-btn"
-              onClick={() => setShowPartnerForm(true)}
-            >
-              Become a partner <ArrowRight size={18} style={{ marginLeft: "8px" }} />
-            </button>
-          </div>
         </div>
       </div>
 
@@ -175,34 +155,6 @@ const PartnersPage = () => {
           </div>
         )}
       </div>
-
-      {/* Interactive Lead Intake Partner Registration Modal Window */}
-      {showPartnerForm && (
-        <div className="prtn-modal-backdrop" onClick={(e) => e.target.classList.contains("prtn-modal-backdrop") && setShowPartnerForm(false)}>
-          <div className="prtn-modal">
-            <button className="prtn-close-x" onClick={() => setShowPartnerForm(false)} aria-label="Close modal">
-              <X size={24} />
-            </button>
-            <h2>Partner Registration</h2>
-            <p>Connect with our engineering and deployment pipeline teams.</p>
-            
-            <form onSubmit={handleFormSubmit}>
-              <label>Full Name</label>
-              <input type="text" name="name" placeholder="John Doe" required />
-              
-              <label>Work Email</label>
-              <input type="email" name="email" placeholder="john@company.com" required />
-              
-              <label>Proposed Collaboration Details</label>
-              <textarea name="message" rows="4" placeholder="Tell us how you would like to collaborate..." required></textarea>
-              
-              <div className="prtn-modal-actions">
-                <button type="submit" className="prtn-submit-btn">Submit Proposal</button>
-              </div>
-            </form>
-          </div>
-        </div>
-      )}
     </div>
   );
 };
