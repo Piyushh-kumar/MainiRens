@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom'; // Added for proper internal routing
 import {
   Wind,
   Waves,
@@ -56,7 +57,7 @@ export default function Home() {
               muted
               loop
               playsInline
-            />
+              />
           )}
         </div>
 
@@ -79,7 +80,6 @@ export default function Home() {
           </p>
 
           <div className="hero-buttons">
-            {/* UPDATED LINK HERE */}
             <a 
               href="https://docs.google.com/forms/d/e/1FAIpQLSfWIwVPSPvXawdhJYNbLKU-mVYw4E30azxgbCWYP_S2qAXPtw/viewform" 
               target="_blank" 
@@ -89,9 +89,10 @@ export default function Home() {
               Sign Up for Early Access
             </a>
             
-            <a href="/contact" className="btn secondary">
+            {/* Corrected to Link tag */}
+            <Link to="/contact" className="btn secondary">
               Contact Us
-            </a>
+            </Link>
           </div>
         </div>
       </section>
@@ -300,9 +301,10 @@ export default function Home() {
             From irrigation canals to urban infrastructure,
             we unlock untapped clean energy potential.
           </p>
-          <a href="/about" className="primary-white">
+          {/* Corrected to Link tag */}
+          <Link to="/about" className="primary-white">
             Learn About Our Mission
-          </a>
+          </Link>
         </div>
       </section>
     </>

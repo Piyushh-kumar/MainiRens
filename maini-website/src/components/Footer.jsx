@@ -7,6 +7,11 @@ import './Footer.css';
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
+  // Helper function to force scrolling to the top of the viewport
+  const handleScrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' }); // Use 'auto' instead of 'smooth' if you want an instant jump
+  };
+
   return (
     <footer className="footer">
       <div className="container footer-grid">
@@ -22,7 +27,15 @@ export default function Footer() {
           </p>
 
           <div className="footer-social">
-            <a href="#_" aria-label="Website"><span><Globe size={20} /></span></a>
+            {/* Updated: Changed to Link, added path to home "/", and attached the scroll behavior */}
+            <Link 
+              to="/" 
+              onClick={handleScrollToTop} 
+              aria-label="Go to top of Home page"
+            >
+              <span><Globe size={20} /></span>
+            </Link>
+            
             <a href="mailto:info@mainirenewables.com" aria-label="Email"><span><Mail size={20} /></span></a>
           </div>
         </div>
@@ -31,7 +44,6 @@ export default function Footer() {
         <div>
           <h4>Quick Links</h4>
           <ul className="footer-links">
-            {/* Using react-router Link instead of a href for internal navigation */}
             <li><Link to="/">Home</Link></li>
             <li><Link to="/technology">Technology</Link></li>
             <li><Link to="/impact">Impact</Link></li>
