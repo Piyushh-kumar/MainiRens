@@ -179,8 +179,8 @@ export default function SolutionsTech() {
           </p>
 
           <div className="cta-action-row">
-            <Link to="/more-solutions" className="cta-button-primary">
-              Explore Supplementary Platforms
+            <Link to="/contact" className="cta-button-primary">
+              Become a Partner &rarr;
             </Link>
 
             <Link to="/contact" className="cta-button-text">

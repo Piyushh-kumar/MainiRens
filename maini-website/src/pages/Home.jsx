@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom'; // Added for proper internal routing
+import { Link } from 'react-router-dom';
 import {
   Wind,
   Waves,
@@ -39,7 +39,6 @@ export default function Home() {
           HERO SECTION (VIDEO BACKGROUND)
       ====================================================== */}
       <section className="hero">
-
         {/* Video Background */}
         <div className="hero-video">
           {!firstVideoEnded ? (
@@ -57,7 +56,7 @@ export default function Home() {
               muted
               loop
               playsInline
-              />
+            />
           )}
         </div>
 
@@ -89,7 +88,6 @@ export default function Home() {
               Sign Up for Early Access
             </a>
             
-            {/* Corrected to Link tag */}
             <Link to="/contact" className="btn secondary">
               Contact Us
             </Link>
@@ -100,24 +98,26 @@ export default function Home() {
       {/* =====================================================
           STAT STRIP
       ====================================================== */}
-      <section className="stats container">
-        <div className="stat-item">
-          <h2>1,75,000 km</h2>
-          <p>Canal Potential in India</p>
-        </div>
-        <div className="stat-item">
-          <h2>~3 Years</h2>
-          <p>Return on Investment</p>
-        </div>
-        <div className="stat-item">
-          <h2>100%</h2>
-          <p>Recyclable Design</p>
-        </div>
-        <div className="stat-item">
-          <h2>Zero</h2>
-          <p>Carbon Emissions</p>
-        </div>
-      </section>
+      <div className="stats-wrapper">
+        <section className="container stats">
+          <div className="stat-item">
+            <h2>1,75,000 km</h2>
+            <p>Canal Potential in India</p>
+          </div>
+          <div className="stat-item">
+            <h2>~3 Years</h2>
+            <p>Return on Investment</p>
+          </div>
+          <div className="stat-item">
+            <h2>100%</h2>
+            <p>Recyclable Design</p>
+          </div>
+          <div className="stat-item">
+            <h2>Zero</h2>
+            <p>Carbon Emissions</p>
+          </div>
+        </section>
+      </div>
 
       {/* =====================================================
           PARTNERS / TRUST
@@ -143,62 +143,64 @@ export default function Home() {
       {/* =====================================================
           SERVICES SECTION
       ====================================================== */}
-      <section className="services-section container">
-        <div className="section-header">
-          <h2>Our Services</h2>
-          <p>
-            Generating power right where you need it—whether from the breeze above or the water below.
-          </p>
-        </div>
-
-        <div className="services-grid">
-          {/* Service 1: WIND */}
-          <div className="service-card">
-            <div className="service-content">
-              <div className="icon-box"><Wind size={32} /></div>
-              <h3>Wind Energy</h3>
-              <p>
-                Become a part of the solution. If you feel the wind on your rooftop,
-                with a wind turbine you can produce energy for your needs, occupying
-                no more space than your water tank and providing you with electrons.
-              </p>
-            </div>
-            <div className="service-video-wrapper">
-              <iframe 
-                width="100%" 
-                height="100%" 
-                src="https://www.youtube.com/embed/uJJeYQqAAE8" 
-                title="Wind Turbine Demo" 
-                frameBorder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                referrerPolicy="strict-origin-when-cross-origin" 
-                allowFullScreen
-              ></iframe>
-            </div>
+      <section className="services-section">
+        <div className="container">
+          <div className="section-header">
+            <h2>Our Services</h2>
+            <p>
+              Generating power right where you need it—whether from the breeze above or the water below.
+            </p>
           </div>
 
-          {/* Service 2: WATER */}
-          <div className="service-card reverse">
-            <div className="service-content">
-              <div className="icon-box"><Waves size={32} /></div>
-              <h3>Hydro Energy</h3>
-              <p>
-                With flowing water running near your property, you can harness its flow
-                and produce your own power. Anywhere you see water flowing, we see
-                potential to produce electricity with our Damless Turbines.
-              </p>
+          <div className="services-grid">
+            {/* Service 1: WIND */}
+            <div className="service-card">
+              <div className="service-content">
+                <div className="icon-box"><Wind size={32} /></div>
+                <h3>Wind Energy</h3>
+                <p>
+                  Become a part of the solution. If you feel the wind on your rooftop,
+                  with a wind turbine you can produce energy for your needs, occupying
+                  no more space than your water tank and providing you with electrons.
+                </p>
+              </div>
+              <div className="service-video-wrapper">
+                <iframe 
+                  width="100%" 
+                  height="100%" 
+                  src="https://www.youtube.com/embed/uJJeYQqAAE8" 
+                  title="Wind Turbine Demo" 
+                  frameBorder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                  referrerPolicy="strict-origin-when-cross-origin" 
+                  allowFullScreen
+                ></iframe>
+              </div>
             </div>
-            <div className="service-video-wrapper">
-              <iframe 
-                width="100%" 
-                height="100%" 
-                src="https://www.youtube.com/embed/3nBkx3V9E48" 
-                title="Water Turbine Demo" 
-                frameBorder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                referrerPolicy="strict-origin-when-cross-origin" 
-                allowFullScreen
-              ></iframe>
+
+            {/* Service 2: WATER */}
+            <div className="service-card reverse">
+              <div className="service-content">
+                <div className="icon-box"><Waves size={32} /></div>
+                <h3>Hydro Energy</h3>
+                <p>
+                  With flowing water running near your property, you can harness its flow
+                  and produce your own power. Anywhere you see water flowing, we see
+                  potential to produce electricity with our Damless Turbines.
+                </p>
+              </div>
+              <div className="service-video-wrapper">
+                <iframe 
+                  width="100%" 
+                  height="100%" 
+                  src="https://www.youtube.com/embed/3nBkx3V9E48" 
+                  title="Water Turbine Demo" 
+                  frameBorder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                  referrerPolicy="strict-origin-when-cross-origin" 
+                  allowFullScreen
+                ></iframe>
+              </div>
             </div>
           </div>
         </div>
@@ -251,43 +253,45 @@ export default function Home() {
       {/* =====================================================
           APPLICATIONS SECTION
       ====================================================== */}
-      <section className="apps-section container">
-        <div className="apps-content">
-          <h2>Versatile Deployment</h2>
-          <p>
-            Modular designs unlock clean energy
-            across diverse environments.
-          </p>
+      <section className="apps-section">
+        <div className="container apps-grid-layout">
+          <div className="apps-content">
+            <h2>Versatile Deployment</h2>
+            <p>
+              Modular designs unlock clean energy
+              across diverse environments.
+            </p>
 
-          <ul className="apps-list">
-            <li>
-              <Waves className="app-icon" />
-              <div>
-                <strong>Irrigation Canals</strong>
-                <span>175,000+ km of existing Indian canal networks.</span>
-              </div>
-            </li>
+            <ul className="apps-list">
+              <li>
+                <Waves className="app-icon" />
+                <div>
+                  <strong>Irrigation Canals</strong>
+                  <span>175,000+ km of existing Indian canal networks.</span>
+                </div>
+              </li>
 
-            <li>
-              <Wind className="app-icon" />
-              <div>
-                <strong>Highways & Metros</strong>
-                <span>Capturing wind turbulence from moving traffic.</span>
-              </div>
-            </li>
+              <li>
+                <Wind className="app-icon" />
+                <div>
+                  <strong>Highways & Metros</strong>
+                  <span>Capturing wind turbulence from moving traffic.</span>
+                </div>
+              </li>
 
-            <li>
-              <Building2 className="app-icon" />
-              <div>
-                <strong>Urban Rooftops</strong>
-                <span>Silent vertical turbines for decentralized cities.</span>
-              </div>
-            </li>
-          </ul>
-        </div>
+              <li>
+                <Building2 className="app-icon" />
+                <div>
+                  <strong>Urban Rooftops</strong>
+                  <span>Silent vertical turbines for decentralized cities.</span>
+                </div>
+              </li>
+            </ul>
+          </div>
 
-        <div className="apps-image">
-          <img src={canalImage} alt="Canal based energy deployment" />
+          <div className="apps-image">
+            <img src={canalImage} alt="Canal based energy deployment" />
+          </div>
         </div>
       </section>
 
@@ -301,7 +305,6 @@ export default function Home() {
             From irrigation canals to urban infrastructure,
             we unlock untapped clean energy potential.
           </p>
-          {/* Corrected to Link tag */}
           <Link to="/about" className="primary-white">
             Learn About Our Mission
           </Link>

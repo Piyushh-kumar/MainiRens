@@ -32,9 +32,9 @@ body {
 /* Utility Class for Containers */
 .container {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1240px;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 2rem; /* Enhanced desktop side safety margins */
 }
 
 /* =========================================================
@@ -48,6 +48,8 @@ body {
   color: var(--white);
   display: flex;
   align-items: center;
+  padding-top: 6rem;
+  padding-bottom: 10rem; /* Creates structural breathing room for negative margin stats strip layout */
 }
 
 /* Video Layer */
@@ -81,7 +83,6 @@ body {
   position: relative;
   z-index: 2;
   width: 100%;
-  padding-top: 4rem; 
 }
 
 /* Badge */
@@ -101,9 +102,9 @@ body {
 
 /* Heading */
 .hero h1 {
-  font-size: clamp(2.8rem, 5vw, 4.8rem);
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
   font-weight: 800;
-  line-height: 1.1;
+  line-height: 1.15;
   margin-bottom: 1.5rem;
   letter-spacing: -0.03em;
 }
@@ -116,7 +117,7 @@ body {
 
 /* Text */
 .hero p {
-  font-size: 1.25rem;
+  font-size: clamp(1.1rem, 2vw, 1.25rem);
   color: var(--text-gray);
   margin-bottom: 2.5rem;
   line-height: 1.6;
@@ -138,6 +139,7 @@ body {
   text-decoration: none;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   display: inline-block;
+  text-align: center;
 }
 
 .primary {
@@ -165,20 +167,26 @@ body {
 }
 
 /* =========================================================
-   STATS STRIP (COMPACT GRAPHIC VERSION)
+   STATS STRIP (FIXED LAYER STACKING & OVERLAP)
 ========================================================= */
+.stats-wrapper {
+  width: 100%;
+  margin-top: -60px;             /* Pulls card over the hero boundary smoothly */
+  position: relative;
+  z-index: 10;                   /* Crucial fix: Forces card over succeeding section painting order */
+  pointer-events: none;          /* Keeps wrapper safe from micro-blocking clicks */
+}
+
 .stats {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
-  margin-top: -60px; 
+  gap: 1.5rem;
   background: var(--card-bg);
-  padding: 1.75rem 1rem; 
-  border-radius: 16px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  padding: 2.5rem 2rem 2.75rem;   /* Generous space below text labels preventing flat clips */
+  border-radius: 16px;            /* Beautiful corner curves now safely viewable */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
   border: 1px solid rgba(255, 255, 255, 0.04);
-  position: relative;
-  z-index: 5;
+  pointer-events: auto;           /* Restores mouse controls inside inner fields */
 }
 
 .stat-item {
@@ -191,7 +199,7 @@ body {
 .stat-item:not(:last-child)::after {
   content: '';
   position: absolute;
-  right: 0;
+  right: -0.75rem;
   top: 15%;
   height: 70%;
   width: 1px;
@@ -199,10 +207,10 @@ body {
 }
 
 .stats h2 {
-  font-size: 2.25rem; 
+  font-size: clamp(1.8rem, 3vw, 2.25rem); 
   font-weight: 800;
   color: var(--primary-brand);
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.5rem;
   letter-spacing: -0.02em;
 }
 
@@ -218,7 +226,7 @@ body {
    PARTNERS / TRUST (PREMIUM DARK FOREST LOGO GRID)
 ========================================================= */
 .partners-section {
-  padding: 8rem 0 4rem;
+  padding: 7rem 0;
   text-align: center;
   background: var(--bg);
 }
@@ -241,15 +249,15 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 2rem;
+  gap: 1.5rem;
   max-width: 1100px;
   margin: 0 auto;
 }
 
 .partner-card {
   background: var(--card-bg);
-  width: 180px;
-  height: 90px;
+  width: 190px;
+  height: 95px;
   border-radius: 14px;
   display: flex;
   align-items: center;
@@ -284,7 +292,7 @@ body {
    SERVICES SECTION (WIND & WATER - ROW FORMAT)
 ========================================================= */
 .services-section {
-  padding: 8rem 1.5rem;
+  padding: 7rem 0;
   border-top: 1px solid var(--border-color);
 }
 
@@ -295,7 +303,7 @@ body {
 }
 
 .section-header h2 {
-  font-size: 2.75rem;
+  font-size: clamp(2.2rem, 4vw, 2.75rem);
   font-weight: 800;
   color: var(--white);
   margin-bottom: 1.25rem;
@@ -312,13 +320,13 @@ body {
 .services-grid {
   display: flex;
   flex-direction: column;
-  gap: 7rem;
+  gap: 8rem;
 }
 
 .service-card {
   display: grid;
   grid-template-columns: 1fr 1.2fr;
-  gap: 5rem;
+  gap: 4rem;
   align-items: center;
 }
 
@@ -342,7 +350,7 @@ body {
 }
 
 .service-content h3 {
-  font-size: 2.25rem;
+  font-size: clamp(1.8rem, 3vw, 2.25rem);
   font-weight: 800;
   margin-bottom: 1.25rem;
   color: var(--white);
@@ -370,7 +378,7 @@ body {
    VALUE SECTION (CLEAN PARAGRAPH TYPOGRAPHY FORMAT)
 ========================================================= */
 .home-section {
-  padding: 8rem 0;
+  padding: 7rem 0;
 }
 
 .bg-light {
@@ -382,13 +390,13 @@ body {
 .value-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 4rem;
+  gap: 3rem;
 }
 
 /* Card borders removed to favor structural vertical accent lines */
 .value-card {
   background: transparent;
-  padding: 0 0 0 24px;
+  padding: 0.5rem 0 0.5rem 24px;
   border-radius: 0;
   box-shadow: none;
   border-left: 2px solid rgba(163, 230, 53, 0.2);
@@ -424,15 +432,18 @@ body {
    APPLICATIONS SECTION
 ========================================================= */
 .apps-section {
-  padding: 8rem 1.5rem;
+  padding: 7rem 0;
+}
+
+.apps-grid-layout {
   display: grid;
   grid-template-columns: 1fr 1.1fr;
-  gap: 60px;
+  gap: 4rem;
   align-items: center;
 }
 
 .apps-content h2 {
-  font-size: 2.75rem;
+  font-size: clamp(2.2rem, 4vw, 2.75rem);
   font-weight: 800;
   margin-bottom: 1.25rem;
   color: var(--white);
@@ -441,7 +452,7 @@ body {
 
 .apps-content p {
   color: var(--text-gray);
-  margin-bottom: 3.5rem;
+  margin-bottom: 3rem;
   font-size: 1.2rem;
   font-weight: 300;
 }
@@ -502,12 +513,12 @@ body {
   background: linear-gradient(135deg, #111614, #1c2421);
   border-top: 1px solid var(--border-color);
   color: var(--white);
-  padding: 8rem 1.5rem;
+  padding: 8rem 0;
   text-align: center;
 }
 
 .home-cta h2 {
-  font-size: 3.5rem;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
   font-weight: 800;
   margin-bottom: 1.5rem;
   letter-spacing: -0.03em;
@@ -544,55 +555,83 @@ body {
    RESPONSIVE LAYOUT MATRIX
 ========================================================= */
 @media (max-width: 1024px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+  .hero {
+    padding-bottom: 8rem;
+  }
+  .stats-wrapper {
+    margin-top: -50px;
+  }
   .stats {
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
+    padding: 2rem 1.5rem;
+  }
+  .stat-item:nth-child(2)::after {
+    display: none; /* Hide alternating dividers in 2x2 grid format */
   }
   .value-grid {
     grid-template-columns: 1fr;
-    gap: 3rem;
+    gap: 2.5rem;
   }
-  .services-section {
-    padding: 6rem 1.5rem;
+  .services-section, .partners-section, .home-section, .apps-section {
+    padding: 5rem 0;
+  }
+  .services-grid {
+    gap: 5rem;
   }
   .service-card {
     grid-template-columns: 1fr;
-    gap: 3.5rem;
+    gap: 2.5rem;
   }
   .service-card.reverse .service-content { order: 0; }
   .service-card.reverse .service-video-wrapper { order: 1; }
   
-  .apps-section {
+  .apps-grid-layout {
     grid-template-columns: 1fr;
-    gap: 4rem;
+    gap: 3.5rem;
   }
   .apps-image {
-    order: -1;
+    order: 1;
   }
 }
 
 @media (max-width: 768px) {
-  .hero { text-align: center; }
-  .hero h1 { font-size: 2.75rem; }
+  .hero { 
+    text-align: center; 
+    padding-top: 5rem;
+    padding-bottom: 6rem;
+  }
   .hero p { margin-left: auto; margin-right: auto; }
   .hero-buttons { justify-content: center; }
   
+  .stats-wrapper {
+    margin-top: 2rem;
+  }
   .stats {
     grid-template-columns: 1fr;
-    margin-top: 2rem;
-    padding: 2rem;
+    gap: 2rem;
     box-shadow: none;
-    background: var(--card-bg);
+    border-color: var(--border-color);
   }
   .stat-item:not(:last-child)::after { display: none; }
   
   .partners-grid { gap: 1rem; }
-  .partner-card { width: 140px; height: 80px; padding: 1rem; }
+  .partner-card { width: calc(33.33% - 1rem); height: 85px; padding: 1rem; }
   
-  .section-header h2, .apps-content h2, .home-cta h2 { font-size: 2.25rem; }
+  .section-header { margin-bottom: 3.5rem; }
+  .apps-content p { margin-bottom: 2.5rem; }
+  .home-cta { padding: 5rem 0; }
+}
+
+@media (max-width: 580px) {
+  .partner-card { width: calc(50% - 1rem); }
 }
 
 @media (max-width: 480px) {
-  .partner-card { width: 46%; height: 75px; }
-  .hero h1 { font-size: 2.25rem; }
+  .hero-buttons .btn {
+    width: 100%;
+  }
 }
